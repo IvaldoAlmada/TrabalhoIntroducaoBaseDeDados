@@ -1,0 +1,320 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Supermercado",
+                              "component": "ids",
+                              "name": "idsLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getSupermercadosResult}",
+                              "textProperty": "tipo",
+                              "valueProperty": "ids",
+                              "placeholder": "Choose Supermercado",
+                              "valueType": "int?",
+                              "type": "dropdown",
+                              "name": "ids",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${produto.ids}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Idp",
+                              "component": "idp",
+                              "name": "idpLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "int",
+                              "type": "numeric",
+                              "name": "idp",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${produto.idp}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "idpRequiredValidator",
+                              "component": "idp",
+                              "text": "idp is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Qtd",
+                              "component": "qtd",
+                              "name": "qtdLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "int",
+                              "type": "numeric",
+                              "name": "qtd",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${produto.qtd}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "qtdRequiredValidator",
+                              "component": "qtd",
+                              "text": "qtd is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Nomedoproduto",
+                              "component": "nomedoproduto",
+                              "name": "nomedoprodutoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "type": "textbox",
+                              "name": "nomedoproduto",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${produto.nomedoproduto}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "nomedoprodutoRequiredValidator",
+                              "component": "nomedoproduto",
+                              "text": "nomedoproduto is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Produto",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "find_supermarket_db.updateProduto",
+                        "parameters": [
+                          {
+                            "name": "idp",
+                            "value": "${parameters.idp}"
+                          },
+                          {
+                            "name": "Produto",
+                            "value": "${produto}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${produto}",
+                            "condition": ""
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "FindSupermarket.Models.FindSupermarketDb.Produto",
+                  "data": "${produto}",
+                  "visible": "${produto != null}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "find_supermarket_db.getProdutoByidp",
+        "parameters": [
+          {
+            "name": "idp",
+            "value": "${parameters.idp}"
+          }
+        ],
+        "then": [
+          {
+            "name": "produto",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "FindSupermarket.Models.FindSupermarketDb.Produto"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      },
+      {
+        "name": "find_supermarket_db.getSupermercados",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getSupermercadosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<FindSupermarket.Models.FindSupermarketDb.Supermercado>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Produto",
+  "layout": "Main"
+}

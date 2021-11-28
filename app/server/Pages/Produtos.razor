@@ -1,0 +1,40 @@
+﻿@page "/produtos"
+@layout MainLayout
+@inherits FindSupermarket.Pages.ProdutosComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using FindSupermarket.Models.FindSupermarketDb
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Produtos">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getProdutosResult" TItem="FindSupermarket.Models.FindSupermarketDb.Produto" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Produto" Property="ids" SortProperty="Supermercado.tipo" GroupProperty="Supermercado.tipo" FilterProperty="Supermercado.tipo" Title="Supermercado">
+              <Template Context="data">
+              @(data.Supermercado?.tipo)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Produto" Property="idp" Title="Idp">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Produto" Property="qtd" Title="Qtd">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Produto" Property="nomedoproduto" Title="Nomedoproduto">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Produto" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="findSupermarketModelsFindSupermarketDbProduto">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, findSupermarketModelsFindSupermarketDbProduto))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

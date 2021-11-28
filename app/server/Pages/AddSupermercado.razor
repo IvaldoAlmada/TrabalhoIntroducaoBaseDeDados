@@ -1,0 +1,85 @@
+﻿@page "/add-supermercado"
+@layout MainLayout
+@inherits FindSupermarket.Pages.AddSupermercadoComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using FindSupermarket.Models.FindSupermarketDb
+<RadzenContent Container="main">
+  <ChildContent>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTemplateForm Data="@supermercado" Visible="@(supermercado != null)" TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" Submit="@Form0Submit">
+          <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Zona" Component="idz" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getZonasResult" TextProperty="idz" ValueProperty="idz" Placeholder="Choose Zona" style="width: 100%" @bind-Value="@(supermercado.idz)" Name="Idz">
+                </RadzenDropDown>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Horafechamento" Component="horafechamento" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@(supermercado.horafechamento)" Name="Horafechamento">
+                </RadzenDatePicker>
+                <RadzenRequiredValidator Component="Horafechamento" Text="horafechamento is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Ids" Component="ids" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenNumeric style="display: block; width: 100%" @bind-Value="@(supermercado.ids)" Name="Ids">
+                </RadzenNumeric>
+                <RadzenRequiredValidator Component="Ids" Text="ids is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Horaabertura" Component="horaabertura" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@(supermercado.horaabertura)" Name="Horaabertura">
+                </RadzenDatePicker>
+                <RadzenRequiredValidator Component="Horaabertura" Text="horaabertura is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Tipo" Component="tipo" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox style="display: block; width: 100%" @bind-Value="@(supermercado.tipo)" Name="Tipo">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Tipo" Text="tipo is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" style="margin-left: 1rem" Text="Cancel" Click="@Button2Click">
+                </RadzenButton>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenTemplateForm>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

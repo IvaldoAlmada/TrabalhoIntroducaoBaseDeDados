@@ -1,0 +1,49 @@
+{
+  "dataSources": [
+    "find_supermarket_db"
+  ],
+  "generator": "@radzen/blazor-server",
+  "https": false,
+  "layouts": [
+    "Login",
+    "Main"
+  ],
+  "logo": "",
+  "name": "findSupermarket",
+  "navigation": [
+    "Conduzs",
+    "Produtos",
+    "Spatial Ref Sies",
+    "Supermercados",
+    "Transportes",
+    "Via",
+    "Zonas"
+  ],
+  "pages": [
+    "Conduzs",
+    "Add Conduz",
+    "Produtos",
+    "Add Produto",
+    "Edit Produto",
+    "Spatial Ref Sies",
+    "Add Spatial Ref Sy",
+    "Edit Spatial Ref Sy",
+    "Supermercados",
+    "Add Supermercado",
+    "Edit Supermercado",
+    "Transportes",
+    "Add Transporte",
+    "Edit Transporte",
+    "Via",
+    "Add Vium",
+    "Edit Vium",
+    "Zonas",
+    "Add Zona",
+    "Edit Zona"
+  ],
+  "serverLang": "cs",
+  "serverProject": true,
+  "serverVersion": "5",
+  "startPage": "Conduzs",
+  "theme": "standard"
+}

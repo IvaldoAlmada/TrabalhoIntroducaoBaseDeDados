@@ -1,0 +1,42 @@
+﻿@page "/supermercados"
+@layout MainLayout
+@inherits FindSupermarket.Pages.SupermercadosComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using FindSupermarket.Models.FindSupermarketDb
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Supermercados">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getSupermercadosResult" TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" Property="idz" SortProperty="Zona.idz" GroupProperty="Zona.idz" FilterProperty="Zona.idz" Title="Zona">
+              <Template Context="data">
+              @(data.Zona?.idz)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" Property="horafechamento" FormatString="{0:MM/dd/yyyy}" Title="Horafechamento">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" Property="ids" Title="Ids">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" Property="horaabertura" FormatString="{0:MM/dd/yyyy}" Title="Horaabertura">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" Property="tipo" Title="Tipo">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="findSupermarketModelsFindSupermarketDbSupermercado">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, findSupermarketModelsFindSupermarketDbSupermercado))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

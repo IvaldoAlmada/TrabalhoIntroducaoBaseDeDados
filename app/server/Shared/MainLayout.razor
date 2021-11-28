@@ -1,0 +1,59 @@
+﻿@inherits FindSupermarket.Layouts.MainLayoutComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using FindSupermarket.Models.FindSupermarketDb
+<RadzenDialog />
+<RadzenNotification />
+<RadzenTooltip />
+<RadzenContextMenu />
+
+<RadzenHeader>
+  <ChildContent>
+    <div class="row justify-content-start align-items-center">
+      <div class="col-6 d-flex align-items-center">
+        <RadzenSidebarToggle Click="@SidebarToggle0Click">
+        </RadzenSidebarToggle>
+        <RadzenLabel Text="findSupermarket">
+        </RadzenLabel>
+      </div>
+      <div class="col-6 text-right">
+      </div>
+    </div>
+  </ChildContent>
+</RadzenHeader>
+<RadzenBody @ref="body0">
+  <ChildContent>
+    <RadzenContentContainer Name="main">
+    @Body
+    </RadzenContentContainer>
+  </ChildContent>
+</RadzenBody>
+<RadzenSidebar @ref="sidebar0">
+  <ChildContent>
+    <RadzenPanelMenu style="height: 100%">
+      <ChildContent>
+        <RadzenPanelMenuItem Text="Conduzs" Path="conduzs">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Produtos" Path="produtos">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Spatial Ref Sies" Path="spatial-ref-sies">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Supermercados" Path="supermercados">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Transportes" Path="transportes">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Via" Path="via">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Zonas" Path="zonas">
+        </RadzenPanelMenuItem>
+      </ChildContent>
+    </RadzenPanelMenu>
+  </ChildContent>
+</RadzenSidebar>
+<RadzenFooter>
+  <ChildContent>
+    <RadzenLabel Text="findSupermarket, Copyright Ⓒ 2021">
+    </RadzenLabel>
+  </ChildContent>
+</RadzenFooter>

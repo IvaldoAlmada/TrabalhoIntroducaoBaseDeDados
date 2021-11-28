@@ -1,0 +1,1504 @@
+{
+  "info": {
+    "title": "find_supermarket_db",
+    "x-type": "odata",
+    "x-connector": "postgresql"
+  },
+  "definitions": {
+    "Conduz": {
+      "x-table": "public.conduz",
+      "resource": "Conduzs",
+      "required": [
+        "ids",
+        "idv"
+      ],
+      "properties": {
+        "Supermercado": {
+          "type": "object",
+          "$ref": "#/definitions/Supermercado"
+        },
+        "ids": {
+          "x-key": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "supermercado",
+            "parentEntityType": "Supermercado",
+            "type": "Supermercado",
+            "principalKey": "ids",
+            "name": "Supermercado",
+            "textProperty": "tipo",
+            "navigationProperty": "Conduzs"
+          }
+        },
+        "Vium": {
+          "type": "object",
+          "$ref": "#/definitions/Vium"
+        },
+        "idv": {
+          "x-key": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "via",
+            "parentEntityType": "Vium",
+            "type": "Vium",
+            "principalKey": "idv",
+            "name": "Vium",
+            "textProperty": "idv",
+            "navigationProperty": "Conduzs"
+          }
+        }
+      }
+    },
+    "Produto": {
+      "x-table": "public.produto",
+      "resource": "Produtos",
+      "required": [
+        "idp",
+        "qtd",
+        "nomedoproduto"
+      ],
+      "properties": {
+        "Supermercado": {
+          "type": "object",
+          "$ref": "#/definitions/Supermercado"
+        },
+        "ids": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "supermercado",
+            "parentEntityType": "Supermercado",
+            "type": "Supermercado",
+            "principalKey": "ids",
+            "name": "Supermercado",
+            "textProperty": "tipo",
+            "navigationProperty": "Produtos"
+          }
+        },
+        "idp": {
+          "x-key": true,
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "qtd": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "nomedoproduto": {
+          "x-nullable": false,
+          "type": "string"
+        }
+      }
+    },
+    "SpatialRefSy": {
+      "x-table": "public.spatial_ref_sys",
+      "resource": "SpatialRefSies",
+      "required": [
+        "srid"
+      ],
+      "properties": {
+        "auth_srid": {
+          "type": "integer"
+        },
+        "srtext": {
+          "type": "string",
+          "length": 2048
+        },
+        "srid": {
+          "x-key": true,
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "proj4text": {
+          "type": "string",
+          "length": 2048
+        },
+        "auth_name": {
+          "type": "string",
+          "length": 256
+        }
+      }
+    },
+    "Supermercado": {
+      "x-table": "public.supermercado",
+      "resource": "Supermercados",
+      "required": [
+        "horafechamento",
+        "ids",
+        "horaabertura",
+        "tipo"
+      ],
+      "properties": {
+        "Zona": {
+          "type": "object",
+          "$ref": "#/definitions/Zona"
+        },
+        "idz": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "zona",
+            "parentEntityType": "Zona",
+            "type": "Zona",
+            "principalKey": "idz",
+            "name": "Zona",
+            "textProperty": "idz",
+            "navigationProperty": "Supermercados"
+          }
+        },
+        "horafechamento": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        "ids": {
+          "x-key": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Supermercado",
+              "name": "Produtos",
+              "type": "Produto"
+            },
+            {
+              "inversePropertyName": "Supermercado",
+              "name": "Conduzs",
+              "type": "Conduz"
+            }
+          ]
+        },
+        "horaabertura": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        "tipo": {
+          "x-nullable": false,
+          "type": "string"
+        },
+        "Produtos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Produto"
+          }
+        },
+        "Conduzs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Conduz"
+          }
+        }
+      }
+    },
+    "Transporte": {
+      "x-table": "public.transporte",
+      "resource": "Transportes",
+      "required": [
+        "idt",
+        "bilhetes"
+      ],
+      "properties": {
+        "idt": {
+          "x-key": true,
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "Vium": {
+          "type": "object",
+          "$ref": "#/definitions/Vium"
+        },
+        "idv": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "via",
+            "parentEntityType": "Vium",
+            "type": "Vium",
+            "principalKey": "idv",
+            "name": "Vium",
+            "textProperty": "idv",
+            "navigationProperty": "Transportes"
+          }
+        },
+        "bilhetes": {
+          "x-nullable": false,
+          "type": "string"
+        }
+      }
+    },
+    "Vium": {
+      "x-table": "public.via",
+      "resource": "Via",
+      "required": [
+        "tamanho",
+        "idv"
+      ],
+      "properties": {
+        "tamanho": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "idv": {
+          "x-key": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Vium",
+              "name": "Transportes",
+              "type": "Transporte"
+            },
+            {
+              "inversePropertyName": "Vium",
+              "name": "Conduzs",
+              "type": "Conduz"
+            }
+          ]
+        },
+        "Transportes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Transporte"
+          }
+        },
+        "Conduzs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Conduz"
+          }
+        }
+      }
+    },
+    "Zona": {
+      "x-table": "public.zona",
+      "resource": "Zonas",
+      "required": [
+        "populao",
+        "idz"
+      ],
+      "properties": {
+        "populao": {
+          "x-original-name": "população",
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "idz": {
+          "x-key": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Zona",
+              "name": "Supermercados",
+              "type": "Supermercado"
+            }
+          ]
+        },
+        "Supermercados": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Supermercado"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/Conduzs": {
+      "get": {
+        "operationId": "getConduzs",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Conduz"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createConduz",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Conduz",
+            "schema": {
+              "$ref": "#/definitions/Conduz"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Conduz"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Produtos": {
+      "get": {
+        "operationId": "getProdutos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Produto"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createProduto",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Produto",
+            "schema": {
+              "$ref": "#/definitions/Produto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Produto"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/SpatialRefSies": {
+      "get": {
+        "operationId": "getSpatialRefSies",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/SpatialRefSy"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createSpatialRefSy",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "SpatialRefSy",
+            "schema": {
+              "$ref": "#/definitions/SpatialRefSy"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/SpatialRefSy"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Supermercados": {
+      "get": {
+        "operationId": "getSupermercados",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Supermercado"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createSupermercado",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Supermercado",
+            "schema": {
+              "$ref": "#/definitions/Supermercado"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Supermercado"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Transportes": {
+      "get": {
+        "operationId": "getTransportes",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Transporte"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTransporte",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Transporte",
+            "schema": {
+              "$ref": "#/definitions/Transporte"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Transporte"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Via": {
+      "get": {
+        "operationId": "getVia",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Vium"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createVium",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Vium",
+            "schema": {
+              "$ref": "#/definitions/Vium"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Vium"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Zonas": {
+      "get": {
+        "operationId": "getZonas",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Zona"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createZona",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Zona",
+            "schema": {
+              "$ref": "#/definitions/Zona"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Zona"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Conduzs(ids={ids},idv={idv})": {
+      "delete": {
+        "operationId": "deleteConduz",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ids",
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "idv",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getConduzByIdsAndIdv",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ids",
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "idv",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Conduz"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateConduz",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ids",
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "idv",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Conduz",
+            "schema": {
+              "$ref": "#/definitions/Conduz"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelConduzChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Conduz",
+            "schema": {
+              "$ref": "#/definitions/Conduz"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Produtos({idp})": {
+      "delete": {
+        "operationId": "deleteProduto",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idp",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getProdutoByidp",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idp",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Produto"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateProduto",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idp",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Produto",
+            "schema": {
+              "$ref": "#/definitions/Produto"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelProdutoChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Produto",
+            "schema": {
+              "$ref": "#/definitions/Produto"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/SpatialRefSies({srid})": {
+      "delete": {
+        "operationId": "deleteSpatialRefSy",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "srid",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getSpatialRefSyBysrid",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "srid",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/SpatialRefSy"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateSpatialRefSy",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "srid",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "SpatialRefSy",
+            "schema": {
+              "$ref": "#/definitions/SpatialRefSy"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelSpatialRefSyChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "SpatialRefSy",
+            "schema": {
+              "$ref": "#/definitions/SpatialRefSy"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Supermercados({ids})": {
+      "delete": {
+        "operationId": "deleteSupermercado",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ids",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getSupermercadoByids",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ids",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Supermercado"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateSupermercado",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ids",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Supermercado",
+            "schema": {
+              "$ref": "#/definitions/Supermercado"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelSupermercadoChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Supermercado",
+            "schema": {
+              "$ref": "#/definitions/Supermercado"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Transportes({idt})": {
+      "delete": {
+        "operationId": "deleteTransporte",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idt",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getTransporteByidt",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idt",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Transporte"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateTransporte",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idt",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Transporte",
+            "schema": {
+              "$ref": "#/definitions/Transporte"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelTransporteChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Transporte",
+            "schema": {
+              "$ref": "#/definitions/Transporte"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Via({idv})": {
+      "delete": {
+        "operationId": "deleteVium",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idv",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getViumByidv",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idv",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Vium"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateVium",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idv",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Vium",
+            "schema": {
+              "$ref": "#/definitions/Vium"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelViumChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Vium",
+            "schema": {
+              "$ref": "#/definitions/Vium"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Zonas({idz})": {
+      "delete": {
+        "operationId": "deleteZona",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idz",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getZonaByidz",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idz",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Zona"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateZona",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idz",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Zona",
+            "schema": {
+              "$ref": "#/definitions/Zona"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelZonaChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Zona",
+            "schema": {
+              "$ref": "#/definitions/Zona"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "basePath": "/odata/FindSupermarketDb",
+  "host": "localhost:5000",
+  "schemes": [
+    "http"
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Produtos"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "path": "add-produto",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "filterMode": "advanced",
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getProdutosResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "idp",
+                            "value": "${event.idp}"
+                          }
+                        ],
+                        "path": "edit-produto",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "ids",
+                      "sortProperty": "Supermercado.tipo",
+                      "groupProperty": "Supermercado.tipo",
+                      "filterProperty": "Supermercado.tipo",
+                      "template": "${data.Supermercado?.tipo}",
+                      "title": "Supermercado"
+                    },
+                    {
+                      "property": "idp",
+                      "title": "Idp"
+                    },
+                    {
+                      "property": "qtd",
+                      "title": "Qtd"
+                    },
+                    {
+                      "property": "nomedoproduto",
+                      "title": "Nomedoproduto"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "condition": "await DialogService.Confirm(\"Are you sure you want to delete this record?\") == true",
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete Produto",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "find_supermarket_db.deleteProduto",
+                                "parameters": [
+                                  {
+                                    "name": "idp",
+                                    "value": "${data.idp}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "await grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "datagrid",
+                  "itemType": "FindSupermarket.Models.FindSupermarketDb.Produto"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "find_supermarket_db.getProdutos",
+        "parameters": [
+          {
+            "name": "$expand",
+            "value": "Supermercado"
+          }
+        ],
+        "then": [
+          {
+            "name": "getProdutosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<FindSupermarket.Models.FindSupermarketDb.Produto>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Produtos",
+  "layout": "Main"
+}

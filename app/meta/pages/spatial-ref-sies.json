@@ -1,0 +1,179 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Spatial Ref Sies"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "path": "add-spatial-ref-sy",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "filterMode": "advanced",
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getSpatialRefSiesResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "srid",
+                            "value": "${event.srid}"
+                          }
+                        ],
+                        "path": "edit-spatial-ref-sy",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "auth_srid",
+                      "title": "Auth Srid"
+                    },
+                    {
+                      "property": "srtext",
+                      "title": "Srtext"
+                    },
+                    {
+                      "property": "srid",
+                      "title": "Srid"
+                    },
+                    {
+                      "property": "proj4text",
+                      "title": "Proj 4 Text"
+                    },
+                    {
+                      "property": "auth_name",
+                      "title": "Auth Name"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "condition": "await DialogService.Confirm(\"Are you sure you want to delete this record?\") == true",
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete SpatialRefSy",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "find_supermarket_db.deleteSpatialRefSy",
+                                "parameters": [
+                                  {
+                                    "name": "srid",
+                                    "value": "${data.srid}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "await grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "datagrid",
+                  "itemType": "FindSupermarket.Models.FindSupermarketDb.SpatialRefSy"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "find_supermarket_db.getSpatialRefSies",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getSpatialRefSiesResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<FindSupermarket.Models.FindSupermarketDb.SpatialRefSy>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Spatial Ref Sies",
+  "layout": "Main"
+}

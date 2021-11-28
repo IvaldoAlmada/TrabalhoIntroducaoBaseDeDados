@@ -1,0 +1,38 @@
+﻿@page "/transportes"
+@layout MainLayout
+@inherits FindSupermarket.Pages.TransportesComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using FindSupermarket.Models.FindSupermarketDb
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Transportes">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getTransportesResult" TItem="FindSupermarket.Models.FindSupermarketDb.Transporte" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Transporte" Property="idt" Title="Idt">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Transporte" Property="idv" SortProperty="Vium.idv" GroupProperty="Vium.idv" FilterProperty="Vium.idv" Title="Vium">
+              <Template Context="data">
+              @(data.Vium?.idv)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Transporte" Property="bilhetes" Title="Bilhetes">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Transporte" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="findSupermarketModelsFindSupermarketDbTransporte">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, findSupermarketModelsFindSupermarketDbTransporte))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

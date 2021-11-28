@@ -1,0 +1,51 @@
+﻿@page "/add-conduz"
+@layout MainLayout
+@inherits FindSupermarket.Pages.AddConduzComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using FindSupermarket.Models.FindSupermarketDb
+<RadzenContent Container="main">
+  <ChildContent>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTemplateForm Data="@conduz" Visible="@(conduz != null)" TItem="FindSupermarket.Models.FindSupermarketDb.Conduz" Submit="@Form0Submit">
+          <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Supermercado" Component="ids" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getSupermercadosResult" TextProperty="tipo" ValueProperty="ids" Placeholder="Choose Supermercado" style="display: block; width: 100%" @bind-Value="@(conduz.ids)" Name="Ids">
+                </RadzenDropDown>
+                <RadzenRequiredValidator Component="Ids" Text="ids is required" style="position: absolute" DefaultValue="0">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Vium" Component="idv" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getViaResult" TextProperty="idv" ValueProperty="idv" Placeholder="Choose Vium" style="display: block; width: 100%" @bind-Value="@(conduz.idv)" Name="Idv">
+                </RadzenDropDown>
+                <RadzenRequiredValidator Component="Idv" Text="idv is required" style="position: absolute" DefaultValue="0">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" style="margin-left: 1rem" Text="Cancel" Click="@Button2Click">
+                </RadzenButton>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenTemplateForm>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

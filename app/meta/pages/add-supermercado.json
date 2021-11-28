@@ -1,0 +1,352 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Zona",
+                              "component": "idz",
+                              "name": "idzLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getZonasResult}",
+                              "textProperty": "idz",
+                              "valueProperty": "idz",
+                              "placeholder": "Choose Zona",
+                              "valueType": "int?",
+                              "type": "dropdown",
+                              "name": "idz",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${supermercado.idz}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Horafechamento",
+                              "component": "horafechamento",
+                              "name": "horafechamentoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "horafechamento",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${supermercado.horafechamento}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "horafechamentoRequiredValidator",
+                              "component": "horafechamento",
+                              "text": "horafechamento is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Ids",
+                              "component": "ids",
+                              "name": "idsLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "int",
+                              "type": "numeric",
+                              "name": "ids",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${supermercado.ids}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "idsRequiredValidator",
+                              "component": "ids",
+                              "text": "ids is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Horaabertura",
+                              "component": "horaabertura",
+                              "name": "horaaberturaLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "horaabertura",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${supermercado.horaabertura}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "horaaberturaRequiredValidator",
+                              "component": "horaabertura",
+                              "text": "horaabertura is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Tipo",
+                              "component": "tipo",
+                              "name": "tipoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "type": "textbox",
+                              "name": "tipo",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${supermercado.tipo}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "tipoRequiredValidator",
+                              "component": "tipo",
+                              "text": "tipo is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to create new Supermercado!",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "find_supermarket_db.createSupermercado",
+                        "parameters": [
+                          {
+                            "name": "Supermercado",
+                            "value": "${supermercado}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${supermercado}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "data": "${supermercado}",
+                  "visible": "${supermercado != null}",
+                  "itemType": "FindSupermarket.Models.FindSupermarketDb.Supermercado"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "find_supermarket_db.getZonas",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getZonasResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<FindSupermarket.Models.FindSupermarketDb.Zona>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "supermercado",
+        "type": "set",
+        "value": "new FindSupermarket.Models.FindSupermarketDb.Supermercado(){}",
+        "valueType": "FindSupermarket.Models.FindSupermarketDb.Supermercado"
+      }
+    ]
+  },
+  "name": "Add Supermercado",
+  "layout": "Main"
+}

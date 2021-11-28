@@ -1,0 +1,217 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Tamanho",
+                              "component": "tamanho",
+                              "name": "tamanhoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "int",
+                              "type": "numeric",
+                              "name": "tamanho",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${vium.tamanho}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "tamanhoRequiredValidator",
+                              "component": "tamanho",
+                              "text": "tamanho is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Idv",
+                              "component": "idv",
+                              "name": "idvLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "int",
+                              "type": "numeric",
+                              "name": "idv",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${vium.idv}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "idvRequiredValidator",
+                              "component": "idv",
+                              "text": "idv is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Vium",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "find_supermarket_db.updateVium",
+                        "parameters": [
+                          {
+                            "name": "idv",
+                            "value": "${parameters.idv}"
+                          },
+                          {
+                            "name": "Vium",
+                            "value": "${vium}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${vium}",
+                            "condition": ""
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "FindSupermarket.Models.FindSupermarketDb.Vium",
+                  "data": "${vium}",
+                  "visible": "${vium != null}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "find_supermarket_db.getViumByidv",
+        "parameters": [
+          {
+            "name": "idv",
+            "value": "${parameters.idv}"
+          }
+        ],
+        "then": [
+          {
+            "name": "vium",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "FindSupermarket.Models.FindSupermarketDb.Vium"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Vium",
+  "layout": "Main"
+}

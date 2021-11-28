@@ -1,0 +1,235 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Supermercado",
+                              "component": "ids",
+                              "name": "idsLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getSupermercadosResult}",
+                              "textProperty": "tipo",
+                              "valueProperty": "ids",
+                              "placeholder": "Choose Supermercado",
+                              "valueType": "int",
+                              "type": "dropdown",
+                              "name": "ids",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${conduz.ids}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "idsRequiredValidator",
+                              "component": "ids",
+                              "text": "ids is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Vium",
+                              "component": "idv",
+                              "name": "idvLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getViaResult}",
+                              "textProperty": "idv",
+                              "valueProperty": "idv",
+                              "placeholder": "Choose Vium",
+                              "valueType": "int",
+                              "type": "dropdown",
+                              "name": "idv",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${conduz.idv}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "idvRequiredValidator",
+                              "component": "idv",
+                              "text": "idv is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to create new Conduz!",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "find_supermarket_db.createConduz",
+                        "parameters": [
+                          {
+                            "name": "Conduz",
+                            "value": "${conduz}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${conduz}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "data": "${conduz}",
+                  "visible": "${conduz != null}",
+                  "itemType": "FindSupermarket.Models.FindSupermarketDb.Conduz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "find_supermarket_db.getSupermercados",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getSupermercadosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<FindSupermarket.Models.FindSupermarketDb.Supermercado>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "find_supermarket_db.getVia",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getViaResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<FindSupermarket.Models.FindSupermarketDb.Vium>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "conduz",
+        "type": "set",
+        "value": "new FindSupermarket.Models.FindSupermarketDb.Conduz(){}",
+        "valueType": "FindSupermarket.Models.FindSupermarketDb.Conduz"
+      }
+    ]
+  },
+  "name": "Add Conduz",
+  "layout": "Main"
+}

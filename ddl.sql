@@ -39,8 +39,6 @@ CREATE TABLE Transporte (
 CREATE TABLE Supermercado (
   ids INT NOT NULL,
   tipo VARCHAR,
-  horaAbertura DATE,
-  horaFechamento DATE,
   geom GEOMETRY,
   nome VARCHAR,
   idz INT,

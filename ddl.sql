@@ -29,13 +29,6 @@ CREATE TABLE Via (
   nome VARCHAR,
   PRIMARY KEY (idv));
 
-CREATE TABLE Transporte (
-  idt INT NOT NULL,
-  bilhetes VARCHAR,
-  idv INT,
-  PRIMARY KEY (idt),
-  FOREIGN KEY (idv) REFERENCES Via(idv));
-
 CREATE TABLE Supermercado (
   ids INT NOT NULL,
   tipo VARCHAR,

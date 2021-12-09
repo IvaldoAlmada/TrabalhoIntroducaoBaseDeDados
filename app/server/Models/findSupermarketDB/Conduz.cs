@@ -8,18 +8,18 @@ namespace FindSupermarket.Models.FindSupermarketDb
   public partial class Conduz
   {
     [Key]
-    public int ids
-    {
-      get;
-      set;
-    }
-    public Supermercado Supermercado { get; set; }
-    [Key]
     public int idv
     {
       get;
       set;
     }
     public Vium Vium { get; set; }
+    [Key]
+    public int ids
+    {
+      get;
+      set;
+    }
+    public Supermercado Supermercado { get; set; }
   }
 }

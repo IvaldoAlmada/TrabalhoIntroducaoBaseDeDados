@@ -56,7 +56,7 @@ namespace FindSupermarket
 
             services.AddDbContext<FindSupermarket.Data.FindSupermarketDbContext>(options =>
             {
-              options.UseNpgsql(Configuration.GetConnectionString("FindSupermarketDbConnection"));
+              options.UseNpgsql(Configuration.GetConnectionString("findSupermarketDBConnection"));
             });
 
             services.AddRazorPages();

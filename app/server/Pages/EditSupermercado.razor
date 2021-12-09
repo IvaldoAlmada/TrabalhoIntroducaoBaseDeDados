@@ -13,28 +13,6 @@
           <ChildContent>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
-                <RadzenLabel Text="Zona" Component="idz" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenDropDown Data="@getZonasResult" TextProperty="idz" ValueProperty="idz" Placeholder="Choose Zona" style="width: 100%" @bind-Value="@(supermercado.idz)" Name="Idz">
-                </RadzenDropDown>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
-                <RadzenLabel Text="Horafechamento" Component="horafechamento" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@(supermercado.horafechamento)" Name="Horafechamento">
-                </RadzenDatePicker>
-                <RadzenRequiredValidator Component="Horafechamento" Text="horafechamento is required" style="position: absolute">
-                </RadzenRequiredValidator>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
                 <RadzenLabel Text="Ids" Component="ids" style="width: 100%">
                 </RadzenLabel>
               </div>
@@ -47,14 +25,22 @@
             </div>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
-                <RadzenLabel Text="Horaabertura" Component="horaabertura" style="width: 100%">
+                <RadzenLabel Text="Zona" Component="idz" style="width: 100%">
                 </RadzenLabel>
               </div>
               <div class="col-md-9">
-                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@(supermercado.horaabertura)" Name="Horaabertura">
-                </RadzenDatePicker>
-                <RadzenRequiredValidator Component="Horaabertura" Text="horaabertura is required" style="position: absolute">
-                </RadzenRequiredValidator>
+                <RadzenDropDown Data="@getZonasResult" TextProperty="name" ValueProperty="idz" Placeholder="Choose Zona" style="width: 100%" @bind-Value="@(supermercado.idz)" Name="Idz">
+                </RadzenDropDown>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Nome" Component="nome" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox style="width: 100%" @bind-Value="@(supermercado.nome)" Name="Nome">
+                </RadzenTextBox>
               </div>
             </div>
             <div style="margin-bottom: 1rem" class="row">
@@ -63,10 +49,8 @@
                 </RadzenLabel>
               </div>
               <div class="col-md-9">
-                <RadzenTextBox style="display: block; width: 100%" @bind-Value="@(supermercado.tipo)" Name="Tipo">
+                <RadzenTextBox style="width: 100%" @bind-Value="@(supermercado.tipo)" Name="Tipo">
                 </RadzenTextBox>
-                <RadzenRequiredValidator Component="Tipo" Text="tipo is required" style="position: absolute">
-                </RadzenRequiredValidator>
               </div>
             </div>
             <div class="row">

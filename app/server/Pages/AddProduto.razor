@@ -13,16 +13,6 @@
           <ChildContent>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
-                <RadzenLabel Text="Supermercado" Component="ids" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenDropDown Data="@getSupermercadosResult" TextProperty="tipo" ValueProperty="ids" Placeholder="Choose Supermercado" style="width: 100%" @bind-Value="@(produto.ids)" Name="Ids">
-                </RadzenDropDown>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
                 <RadzenLabel Text="Idp" Component="idp" style="width: 100%">
                 </RadzenLabel>
               </div>
@@ -39,10 +29,18 @@
                 </RadzenLabel>
               </div>
               <div class="col-md-9">
-                <RadzenNumeric style="display: block; width: 100%" @bind-Value="@(produto.qtd)" Name="Qtd">
+                <RadzenNumeric style="width: 100%" @bind-Value="@(produto.qtd)" Name="Qtd">
                 </RadzenNumeric>
-                <RadzenRequiredValidator Component="Qtd" Text="qtd is required" style="position: absolute">
-                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Supermercado" Component="ids" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getSupermercadosResult" TextProperty="nome" ValueProperty="ids" Placeholder="Choose Supermercado" style="width: 100%" @bind-Value="@(produto.ids)" Name="Ids">
+                </RadzenDropDown>
               </div>
             </div>
             <div style="margin-bottom: 1rem" class="row">
@@ -51,10 +49,8 @@
                 </RadzenLabel>
               </div>
               <div class="col-md-9">
-                <RadzenTextBox style="display: block; width: 100%" @bind-Value="@(produto.nomedoproduto)" Name="Nomedoproduto">
+                <RadzenTextBox style="width: 100%" @bind-Value="@(produto.nomedoproduto)" Name="Nomedoproduto">
                 </RadzenTextBox>
-                <RadzenRequiredValidator Component="Nomedoproduto" Text="nomedoproduto is required" style="position: absolute">
-                </RadzenRequiredValidator>
               </div>
             </div>
             <div class="row">

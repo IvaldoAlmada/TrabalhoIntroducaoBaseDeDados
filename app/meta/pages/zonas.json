@@ -75,12 +75,16 @@
                   "title": "",
                   "columns": [
                     {
+                      "property": "idz",
+                      "title": "Idz"
+                    },
+                    {
                       "property": "populao",
                       "title": "Populacao"
                     },
                     {
-                      "property": "idz",
-                      "title": "Idz"
+                      "property": "name",
+                      "title": "Name"
                     },
                     {
                       "filterable": false,
@@ -113,7 +117,7 @@
                                     "type": "notify"
                                   }
                                 ],
-                                "name": "find_supermarket_db.deleteZona",
+                                "name": "findSupermarketDB.deleteZona",
                                 "parameters": [
                                   {
                                     "name": "idz",
@@ -148,7 +152,7 @@
   "events": {
     "load": [
       {
-        "name": "find_supermarket_db.getZonas",
+        "name": "findSupermarketDB.getZonas",
         "parameters": [],
         "then": [
           {

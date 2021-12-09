@@ -27,6 +27,54 @@
                           "components": [
                             {
                               "type": "label",
+                              "text": "Srid",
+                              "component": "srid",
+                              "name": "sridLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "int",
+                              "type": "numeric",
+                              "name": "srid",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${spatialrefsy.srid}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "sridRequiredValidator",
+                              "component": "srid",
+                              "text": "srid is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
                               "text": "Auth Srid",
                               "component": "auth_srid",
                               "name": "auth_sridLabel",
@@ -48,6 +96,45 @@
                                 "width": "100%"
                               },
                               "value": "${spatialrefsy.auth_srid}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Auth Name",
+                              "component": "auth_name",
+                              "name": "auth_nameLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 256,
+                              "type": "textbox",
+                              "name": "auth_name",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${spatialrefsy.auth_name}"
                             }
                           ]
                         }
@@ -104,54 +191,6 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Srid",
-                              "component": "srid",
-                              "name": "sridLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "int",
-                              "type": "numeric",
-                              "name": "srid",
-                              "style": {
-                                "display": "block",
-                                "width": "100%"
-                              },
-                              "value": "${spatialrefsy.srid}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "sridRequiredValidator",
-                              "component": "srid",
-                              "text": "srid is required",
-                              "style": {
-                                "position": "absolute"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
                               "text": "Proj 4 Text",
                               "component": "proj4text",
                               "name": "proj4textLabel",
@@ -174,45 +213,6 @@
                                 "width": "100%"
                               },
                               "value": "${spatialrefsy.proj4text}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
-                              "text": "Auth Name",
-                              "component": "auth_name",
-                              "name": "auth_nameLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "string",
-                              "maxLength": 256,
-                              "type": "textbox",
-                              "name": "auth_name",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "value": "${spatialrefsy.auth_name}"
                             }
                           ]
                         }
@@ -263,7 +263,7 @@
                             "type": "notify"
                           }
                         ],
-                        "name": "find_supermarket_db.createSpatialRefSy",
+                        "name": "findSupermarketDB.createSpatialRefSy",
                         "parameters": [
                           {
                             "name": "SpatialRefSy",

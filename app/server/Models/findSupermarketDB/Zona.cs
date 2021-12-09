@@ -1,25 +1,29 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FindSupermarket.Models.FindSupermarketDb
 {
-  [Table("transporte", Schema = "public")]
-  public partial class Transporte
+  [Table("zona", Schema = "public")]
+  public partial class Zona
   {
     [Key]
-    public int idt
+    public int idz
     {
       get;
       set;
     }
-    public int? idv
+
+    public ICollection<Supermercado> Supermercados { get; set; }
+
+    [Column("população")]
+    public int? populao
     {
       get;
       set;
     }
-    public Vium Vium { get; set; }
-    public string bilhetes
+    public string name
     {
       get;
       set;

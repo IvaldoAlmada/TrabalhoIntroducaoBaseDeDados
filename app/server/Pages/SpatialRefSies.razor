@@ -15,15 +15,15 @@
         </RadzenButton>
         <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getSpatialRefSiesResult" TItem="FindSupermarket.Models.FindSupermarketDb.SpatialRefSy" RowSelect="@Grid0RowSelect">
           <Columns>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.SpatialRefSy" Property="srid" Title="Srid">
+            </RadzenDataGridColumn>
             <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.SpatialRefSy" Property="auth_srid" Title="Auth Srid">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.SpatialRefSy" Property="auth_name" Title="Auth Name">
             </RadzenDataGridColumn>
             <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.SpatialRefSy" Property="srtext" Title="Srtext">
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.SpatialRefSy" Property="srid" Title="Srid">
-            </RadzenDataGridColumn>
             <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.SpatialRefSy" Property="proj4text" Title="Proj 4 Text">
-            </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.SpatialRefSy" Property="auth_name" Title="Auth Name">
             </RadzenDataGridColumn>
             <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.SpatialRefSy" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
               <Template Context="findSupermarketModelsFindSupermarketDbSpatialRefSy">

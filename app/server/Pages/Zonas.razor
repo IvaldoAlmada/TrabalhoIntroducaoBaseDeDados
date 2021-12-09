@@ -15,9 +15,11 @@
         </RadzenButton>
         <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getZonasResult" TItem="FindSupermarket.Models.FindSupermarketDb.Zona" RowSelect="@Grid0RowSelect">
           <Columns>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Zona" Property="idz" Title="Idz">
+            </RadzenDataGridColumn>
             <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Zona" Property="populao" Title="Populacao">
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Zona" Property="idz" Title="Idz">
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Zona" Property="name" Title="Name">
             </RadzenDataGridColumn>
             <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Zona" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
               <Template Context="findSupermarketModelsFindSupermarketDbZona">

@@ -75,20 +75,20 @@
                   "title": "",
                   "columns": [
                     {
-                      "property": "ids",
-                      "sortProperty": "Supermercado.tipo",
-                      "groupProperty": "Supermercado.tipo",
-                      "filterProperty": "Supermercado.tipo",
-                      "template": "${data.Supermercado?.tipo}",
-                      "title": "Supermercado"
-                    },
-                    {
                       "property": "idp",
                       "title": "Idp"
                     },
                     {
                       "property": "qtd",
                       "title": "Qtd"
+                    },
+                    {
+                      "property": "ids",
+                      "sortProperty": "Supermercado.nome",
+                      "groupProperty": "Supermercado.nome",
+                      "filterProperty": "Supermercado.nome",
+                      "template": "${data.Supermercado?.nome}",
+                      "title": "Supermercado"
                     },
                     {
                       "property": "nomedoproduto",
@@ -125,7 +125,7 @@
                                     "type": "notify"
                                   }
                                 ],
-                                "name": "find_supermarket_db.deleteProduto",
+                                "name": "findSupermarketDB.deleteProduto",
                                 "parameters": [
                                   {
                                     "name": "idp",
@@ -160,7 +160,7 @@
   "events": {
     "load": [
       {
-        "name": "find_supermarket_db.getProdutos",
+        "name": "findSupermarketDB.getProdutos",
         "parameters": [
           {
             "name": "$expand",

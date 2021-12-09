@@ -1,0 +1,31 @@
+﻿@page "/produto-zonas"
+@layout MainLayout
+@inherits FindSupermarket.Pages.ProdutoZonasComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using FindSupermarket.Models.FindSupermarketDb
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Produto Zonas">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getProdutoZonasResult" TItem="FindSupermarket.Models.FindSupermarketDb.ProdutoZona">
+          <Columns>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.ProdutoZona" Property="tipo_supermercado" Title="Tipo Supermercado">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.ProdutoZona" Property="nome_supermercado" Title="Nome Supermercado">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.ProdutoZona" Property="nome_produto" Title="Nome Produto">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.ProdutoZona" Property="qtd_produto" Title="Qtd Produto">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.ProdutoZona" Property="nome_zona" Title="Nome Zona">
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

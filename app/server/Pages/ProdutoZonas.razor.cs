@@ -7,7 +7,7 @@ using Radzen.Blazor;
 
 namespace FindSupermarket.Pages
 {
-    public partial class AddTransporteComponent
+    public partial class ProdutoZonasComponent
     {
 
     }

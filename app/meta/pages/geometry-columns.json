@@ -1,0 +1,90 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Geometry Columns"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "filterMode": "advanced",
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getGeometryColumnsResult}",
+                  "events": {
+                    "loadData": []
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "f_table_catalog",
+                      "title": "F Table Catalog"
+                    },
+                    {
+                      "property": "f_table_schema",
+                      "title": "F Table Schema"
+                    },
+                    {
+                      "property": "f_table_name",
+                      "title": "F Table Name"
+                    },
+                    {
+                      "property": "f_geometry_column",
+                      "title": "F Geometry Column"
+                    },
+                    {
+                      "property": "coord_dimension",
+                      "title": "Coord Dimension"
+                    },
+                    {
+                      "property": "srid",
+                      "title": "Srid"
+                    },
+                    {
+                      "property": "type",
+                      "title": "Type"
+                    }
+                  ],
+                  "type": "datagrid",
+                  "itemType": "FindSupermarket.Models.FindSupermarketDb.GeometryColumn"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "findSupermarketDB.getGeometryColumns",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getGeometryColumnsResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<FindSupermarket.Models.FindSupermarketDb.GeometryColumn>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Geometry Columns",
+  "layout": "Main"
+}

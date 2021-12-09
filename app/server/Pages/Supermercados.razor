@@ -15,16 +15,14 @@
         </RadzenButton>
         <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getSupermercadosResult" TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" RowSelect="@Grid0RowSelect">
           <Columns>
-            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" Property="idz" SortProperty="Zona.idz" GroupProperty="Zona.idz" FilterProperty="Zona.idz" Title="Zona">
-              <Template Context="data">
-              @(data.Zona?.idz)
-              </Template>
-            </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" Property="horafechamento" FormatString="{0:MM/dd/yyyy}" Title="Horafechamento">
-            </RadzenDataGridColumn>
             <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" Property="ids" Title="Ids">
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" Property="horaabertura" FormatString="{0:MM/dd/yyyy}" Title="Horaabertura">
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" Property="idz" SortProperty="Zona.name" GroupProperty="Zona.name" FilterProperty="Zona.name" Title="Zona">
+              <Template Context="data">
+              @(data.Zona?.name)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" Property="nome" Title="Nome">
             </RadzenDataGridColumn>
             <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Supermercado" Property="tipo" Title="Tipo">
             </RadzenDataGridColumn>

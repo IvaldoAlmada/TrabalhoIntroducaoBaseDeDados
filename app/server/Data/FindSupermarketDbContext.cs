@@ -26,19 +26,22 @@ namespace FindSupermarket.Data
     {
         base.OnModelCreating(builder);
 
+        builder.Entity<FindSupermarket.Models.FindSupermarketDb.GeographyColumn>().HasNoKey();
+        builder.Entity<FindSupermarket.Models.FindSupermarketDb.GeometryColumn>().HasNoKey();
+        builder.Entity<FindSupermarket.Models.FindSupermarketDb.ProdutoZona>().HasNoKey();
         builder.Entity<FindSupermarket.Models.FindSupermarketDb.Conduz>().HasKey(table => new {
-          table.ids, table.idv
+          table.idv, table.ids
         });
-        builder.Entity<FindSupermarket.Models.FindSupermarketDb.Conduz>()
-              .HasOne(i => i.Supermercado)
-              .WithMany(i => i.Conduzs)
-              .HasForeignKey(i => i.ids)
-              .HasPrincipalKey(i => i.ids);
         builder.Entity<FindSupermarket.Models.FindSupermarketDb.Conduz>()
               .HasOne(i => i.Vium)
               .WithMany(i => i.Conduzs)
               .HasForeignKey(i => i.idv)
               .HasPrincipalKey(i => i.idv);
+        builder.Entity<FindSupermarket.Models.FindSupermarketDb.Conduz>()
+              .HasOne(i => i.Supermercado)
+              .WithMany(i => i.Conduzs)
+              .HasForeignKey(i => i.ids)
+              .HasPrincipalKey(i => i.ids);
         builder.Entity<FindSupermarket.Models.FindSupermarketDb.Produto>()
               .HasOne(i => i.Supermercado)
               .WithMany(i => i.Produtos)
@@ -49,11 +52,6 @@ namespace FindSupermarket.Data
               .WithMany(i => i.Supermercados)
               .HasForeignKey(i => i.idz)
               .HasPrincipalKey(i => i.idz);
-        builder.Entity<FindSupermarket.Models.FindSupermarketDb.Transporte>()
-              .HasOne(i => i.Vium)
-              .WithMany(i => i.Transportes)
-              .HasForeignKey(i => i.idv)
-              .HasPrincipalKey(i => i.idv);
 
         this.OnModelBuilding(builder);
     }
@@ -65,7 +63,25 @@ namespace FindSupermarket.Data
       set;
     }
 
+    public DbSet<FindSupermarket.Models.FindSupermarketDb.GeographyColumn> GeographyColumns
+    {
+      get;
+      set;
+    }
+
+    public DbSet<FindSupermarket.Models.FindSupermarketDb.GeometryColumn> GeometryColumns
+    {
+      get;
+      set;
+    }
+
     public DbSet<FindSupermarket.Models.FindSupermarketDb.Produto> Produtos
+    {
+      get;
+      set;
+    }
+
+    public DbSet<FindSupermarket.Models.FindSupermarketDb.ProdutoZona> ProdutoZonas
     {
       get;
       set;
@@ -78,12 +94,6 @@ namespace FindSupermarket.Data
     }
 
     public DbSet<FindSupermarket.Models.FindSupermarketDb.Supermercado> Supermercados
-    {
-      get;
-      set;
-    }
-
-    public DbSet<FindSupermarket.Models.FindSupermarketDb.Transporte> Transportes
     {
       get;
       set;

@@ -27,44 +27,6 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Populacao",
-                              "component": "populao",
-                              "name": "populaoLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "int",
-                              "type": "numeric",
-                              "name": "populao",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "value": "${zona.populao}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
                               "text": "Idz",
                               "component": "idz",
                               "name": "idzLabel",
@@ -96,6 +58,82 @@
                               "style": {
                                 "position": "absolute"
                               }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Populacao",
+                              "component": "populao",
+                              "name": "populaoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "int?",
+                              "type": "numeric",
+                              "name": "populao",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${zona.populao}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Name",
+                              "component": "name",
+                              "name": "nameLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "type": "textbox",
+                              "name": "name",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${zona.name}"
                             }
                           ]
                         }
@@ -146,7 +184,7 @@
                             "type": "notify"
                           }
                         ],
-                        "name": "find_supermarket_db.updateZona",
+                        "name": "findSupermarketDB.updateZona",
                         "parameters": [
                           {
                             "name": "idz",
@@ -182,7 +220,7 @@
   "events": {
     "load": [
       {
-        "name": "find_supermarket_db.getZonaByidz",
+        "name": "findSupermarketDB.getZonaByidz",
         "parameters": [
           {
             "name": "idz",

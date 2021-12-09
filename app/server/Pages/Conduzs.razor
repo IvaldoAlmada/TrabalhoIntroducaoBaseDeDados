@@ -16,14 +16,14 @@
         </RadzenButton>
         <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getConduzsResult" TItem="FindSupermarket.Models.FindSupermarketDb.Conduz">
           <Columns>
-            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Conduz" Property="ids" SortProperty="Supermercado.tipo" GroupProperty="Supermercado.tipo" FilterProperty="Supermercado.tipo" Title="Supermercado">
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Conduz" Property="idv" SortProperty="Vium.nome" GroupProperty="Vium.nome" FilterProperty="Vium.nome" Title="Vium">
               <Template Context="data">
-              @(data.Supermercado?.tipo)
+              @(data.Vium?.nome)
               </Template>
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Conduz" Property="idv" SortProperty="Vium.idv" GroupProperty="Vium.idv" FilterProperty="Vium.idv" Title="Vium">
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Conduz" Property="ids" SortProperty="Supermercado.nome" GroupProperty="Supermercado.nome" FilterProperty="Supermercado.nome" Title="Supermercado">
               <Template Context="data">
-              @(data.Vium?.idv)
+              @(data.Supermercado?.nome)
               </Template>
             </RadzenDataGridColumn>
             <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Conduz" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">

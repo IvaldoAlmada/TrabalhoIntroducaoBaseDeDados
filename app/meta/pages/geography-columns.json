@@ -1,0 +1,90 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Geography Columns"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "filterMode": "advanced",
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getGeographyColumnsResult}",
+                  "events": {
+                    "loadData": []
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "f_table_catalog",
+                      "title": "F Table Catalog"
+                    },
+                    {
+                      "property": "f_table_schema",
+                      "title": "F Table Schema"
+                    },
+                    {
+                      "property": "f_table_name",
+                      "title": "F Table Name"
+                    },
+                    {
+                      "property": "f_geography_column",
+                      "title": "F Geography Column"
+                    },
+                    {
+                      "property": "coord_dimension",
+                      "title": "Coord Dimension"
+                    },
+                    {
+                      "property": "srid",
+                      "title": "Srid"
+                    },
+                    {
+                      "property": "type",
+                      "title": "Type"
+                    }
+                  ],
+                  "type": "datagrid",
+                  "itemType": "FindSupermarket.Models.FindSupermarketDb.GeographyColumn"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "findSupermarketDB.getGeographyColumns",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getGeographyColumnsResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<FindSupermarket.Models.FindSupermarketDb.GeographyColumn>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Geography Columns",
+  "layout": "Main"
+}

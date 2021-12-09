@@ -1,0 +1,35 @@
+﻿@page "/geometry-columns"
+@layout MainLayout
+@inherits FindSupermarket.Pages.GeometryColumnsComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using FindSupermarket.Models.FindSupermarketDb
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Geometry Columns">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getGeometryColumnsResult" TItem="FindSupermarket.Models.FindSupermarketDb.GeometryColumn">
+          <Columns>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.GeometryColumn" Property="f_table_catalog" Title="F Table Catalog">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.GeometryColumn" Property="f_table_schema" Title="F Table Schema">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.GeometryColumn" Property="f_table_name" Title="F Table Name">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.GeometryColumn" Property="f_geometry_column" Title="F Geometry Column">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.GeometryColumn" Property="coord_dimension" Title="Coord Dimension">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.GeometryColumn" Property="srid" Title="Srid">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.GeometryColumn" Property="type" Title="Type">
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

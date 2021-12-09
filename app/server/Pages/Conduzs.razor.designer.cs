@@ -73,7 +73,7 @@ namespace FindSupermarket.Pages
         }
         protected async System.Threading.Tasks.Task Load()
         {
-            var findSupermarketDbGetConduzsResult = await FindSupermarketDb.GetConduzs(new Query() { Expand = "Supermercado,Vium" });
+            var findSupermarketDbGetConduzsResult = await FindSupermarketDb.GetConduzs(new Query() { Expand = "Vium,Supermercado" });
             getConduzsResult = findSupermarketDbGetConduzsResult;
         }
 
@@ -91,7 +91,7 @@ namespace FindSupermarket.Pages
             {
                 if (await DialogService.Confirm("Are you sure you want to delete this record?") == true)
                 {
-                    var findSupermarketDbDeleteConduzResult = await FindSupermarketDb.DeleteConduz(data.ids, data.idv);
+                    var findSupermarketDbDeleteConduzResult = await FindSupermarketDb.DeleteConduz(data.idv, data.ids);
                     if (findSupermarketDbDeleteConduzResult != null)
                     {
                         await grid0.Reload();

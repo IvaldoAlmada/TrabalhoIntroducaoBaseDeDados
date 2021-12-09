@@ -55,29 +55,29 @@ using FindSupermarket.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\ivald\dev\TrabalhoIntroducaoBaseDeDados\app\server\Pages\EditTransporte.razor"
+#line 5 "C:\Users\ivald\dev\TrabalhoIntroducaoBaseDeDados\app\server\Pages\ProdutoZonas.razor"
 using Radzen;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\ivald\dev\TrabalhoIntroducaoBaseDeDados\app\server\Pages\EditTransporte.razor"
+#line 6 "C:\Users\ivald\dev\TrabalhoIntroducaoBaseDeDados\app\server\Pages\ProdutoZonas.razor"
 using Radzen.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\ivald\dev\TrabalhoIntroducaoBaseDeDados\app\server\Pages\EditTransporte.razor"
+#line 7 "C:\Users\ivald\dev\TrabalhoIntroducaoBaseDeDados\app\server\Pages\ProdutoZonas.razor"
 using FindSupermarket.Models.FindSupermarketDb;
 
 #line default
 #line hidden
 #nullable disable
     [Microsoft.AspNetCore.Components.LayoutAttribute(typeof(MainLayout))]
-    [Microsoft.AspNetCore.Components.RouteAttribute("/edit-transporte/{idt}")]
-    public partial class EditTransporte : FindSupermarket.Pages.EditTransporteComponent
+    [Microsoft.AspNetCore.Components.RouteAttribute("/produto-zonas")]
+    public partial class ProdutoZonas : FindSupermarket.Pages.ProdutoZonasComponent
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)

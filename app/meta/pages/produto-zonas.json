@@ -1,0 +1,82 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Produto Zonas"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "filterMode": "advanced",
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getProdutoZonasResult}",
+                  "events": {
+                    "loadData": []
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "tipo_supermercado",
+                      "title": "Tipo Supermercado"
+                    },
+                    {
+                      "property": "nome_supermercado",
+                      "title": "Nome Supermercado"
+                    },
+                    {
+                      "property": "nome_produto",
+                      "title": "Nome Produto"
+                    },
+                    {
+                      "property": "qtd_produto",
+                      "title": "Qtd Produto"
+                    },
+                    {
+                      "property": "nome_zona",
+                      "title": "Nome Zona"
+                    }
+                  ],
+                  "type": "datagrid",
+                  "itemType": "FindSupermarket.Models.FindSupermarketDb.ProdutoZona"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "findSupermarketDB.getProdutoZonas",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getProdutoZonasResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<FindSupermarket.Models.FindSupermarketDb.ProdutoZona>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Produto Zonas",
+  "layout": "Main"
+}

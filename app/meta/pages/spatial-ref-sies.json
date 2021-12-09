@@ -75,24 +75,24 @@
                   "title": "",
                   "columns": [
                     {
+                      "property": "srid",
+                      "title": "Srid"
+                    },
+                    {
                       "property": "auth_srid",
                       "title": "Auth Srid"
+                    },
+                    {
+                      "property": "auth_name",
+                      "title": "Auth Name"
                     },
                     {
                       "property": "srtext",
                       "title": "Srtext"
                     },
                     {
-                      "property": "srid",
-                      "title": "Srid"
-                    },
-                    {
                       "property": "proj4text",
                       "title": "Proj 4 Text"
-                    },
-                    {
-                      "property": "auth_name",
-                      "title": "Auth Name"
                     },
                     {
                       "filterable": false,
@@ -125,7 +125,7 @@
                                     "type": "notify"
                                   }
                                 ],
-                                "name": "find_supermarket_db.deleteSpatialRefSy",
+                                "name": "findSupermarketDB.deleteSpatialRefSy",
                                 "parameters": [
                                   {
                                     "name": "srid",
@@ -160,7 +160,7 @@
   "events": {
     "load": [
       {
-        "name": "find_supermarket_db.getSpatialRefSies",
+        "name": "findSupermarketDB.getSpatialRefSies",
         "parameters": [],
         "then": [
           {

@@ -8,11 +8,6 @@ namespace FindSupermarket.Models.FindSupermarketDb
   [Table("via", Schema = "public")]
   public partial class Vium
   {
-    public int tamanho
-    {
-      get;
-      set;
-    }
     [Key]
     public int idv
     {
@@ -20,7 +15,16 @@ namespace FindSupermarket.Models.FindSupermarketDb
       set;
     }
 
-    public ICollection<Transporte> Transportes { get; set; }
     public ICollection<Conduz> Conduzs { get; set; }
+    public int? tamanho
+    {
+      get;
+      set;
+    }
+    public string nome
+    {
+      get;
+      set;
+    }
   }
 }

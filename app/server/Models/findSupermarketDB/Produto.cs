@@ -4,31 +4,27 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FindSupermarket.Models.FindSupermarketDb
 {
-  [Table("spatial_ref_sys", Schema = "public")]
-  public partial class SpatialRefSy
+  [Table("produto", Schema = "public")]
+  public partial class Produto
   {
-    public int? auth_srid
-    {
-      get;
-      set;
-    }
-    public string srtext
-    {
-      get;
-      set;
-    }
     [Key]
-    public int srid
+    public int idp
     {
       get;
       set;
     }
-    public string proj4text
+    public int? qtd
     {
       get;
       set;
     }
-    public string auth_name
+    public int? ids
+    {
+      get;
+      set;
+    }
+    public Supermercado Supermercado { get; set; }
+    public string nomedoproduto
     {
       get;
       set;

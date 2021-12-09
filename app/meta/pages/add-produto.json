@@ -27,48 +27,6 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Supermercado",
-                              "component": "ids",
-                              "name": "idsLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "data": "${getSupermercadosResult}",
-                              "textProperty": "tipo",
-                              "valueProperty": "ids",
-                              "placeholder": "Choose Supermercado",
-                              "valueType": "int?",
-                              "type": "dropdown",
-                              "name": "ids",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "value": "${produto.ids}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
                               "text": "Idp",
                               "component": "idp",
                               "name": "idpLabel",
@@ -131,23 +89,55 @@
                           "class": "col-md-9",
                           "components": [
                             {
-                              "valueType": "int",
+                              "valueType": "int?",
                               "type": "numeric",
                               "name": "qtd",
                               "style": {
-                                "display": "block",
                                 "width": "100%"
                               },
                               "value": "${produto.qtd}"
-                            },
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
                             {
-                              "type": "required-validator",
-                              "name": "qtdRequiredValidator",
-                              "component": "qtd",
-                              "text": "qtd is required",
+                              "type": "label",
+                              "text": "Supermercado",
+                              "component": "ids",
+                              "name": "idsLabel",
                               "style": {
-                                "position": "absolute"
+                                "width": "100%"
                               }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getSupermercadosResult}",
+                              "textProperty": "nome",
+                              "valueProperty": "ids",
+                              "placeholder": "Choose Supermercado",
+                              "valueType": "int?",
+                              "type": "dropdown",
+                              "name": "ids",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${produto.ids}"
                             }
                           ]
                         }
@@ -183,19 +173,9 @@
                               "type": "textbox",
                               "name": "nomedoproduto",
                               "style": {
-                                "display": "block",
                                 "width": "100%"
                               },
                               "value": "${produto.nomedoproduto}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "nomedoprodutoRequiredValidator",
-                              "component": "nomedoproduto",
-                              "text": "nomedoproduto is required",
-                              "style": {
-                                "position": "absolute"
-                              }
                             }
                           ]
                         }
@@ -246,7 +226,7 @@
                             "type": "notify"
                           }
                         ],
-                        "name": "find_supermarket_db.createProduto",
+                        "name": "findSupermarketDB.createProduto",
                         "parameters": [
                           {
                             "name": "Produto",
@@ -277,7 +257,7 @@
   "events": {
     "load": [
       {
-        "name": "find_supermarket_db.getSupermercados",
+        "name": "findSupermarketDB.getSupermercados",
         "parameters": [],
         "then": [
           {

@@ -55,29 +55,29 @@ using FindSupermarket.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\ivald\dev\TrabalhoIntroducaoBaseDeDados\app\server\Pages\Transportes.razor"
+#line 5 "C:\Users\ivald\dev\TrabalhoIntroducaoBaseDeDados\app\server\Pages\GeometryColumns.razor"
 using Radzen;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\ivald\dev\TrabalhoIntroducaoBaseDeDados\app\server\Pages\Transportes.razor"
+#line 6 "C:\Users\ivald\dev\TrabalhoIntroducaoBaseDeDados\app\server\Pages\GeometryColumns.razor"
 using Radzen.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\ivald\dev\TrabalhoIntroducaoBaseDeDados\app\server\Pages\Transportes.razor"
+#line 7 "C:\Users\ivald\dev\TrabalhoIntroducaoBaseDeDados\app\server\Pages\GeometryColumns.razor"
 using FindSupermarket.Models.FindSupermarketDb;
 
 #line default
 #line hidden
 #nullable disable
     [Microsoft.AspNetCore.Components.LayoutAttribute(typeof(MainLayout))]
-    [Microsoft.AspNetCore.Components.RouteAttribute("/transportes")]
-    public partial class Transportes : FindSupermarket.Pages.TransportesComponent
+    [Microsoft.AspNetCore.Components.RouteAttribute("/geometry-columns")]
+    public partial class GeometryColumns : FindSupermarket.Pages.GeometryColumnsComponent
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)

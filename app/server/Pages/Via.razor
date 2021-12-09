@@ -15,9 +15,11 @@
         </RadzenButton>
         <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getViaResult" TItem="FindSupermarket.Models.FindSupermarketDb.Vium" RowSelect="@Grid0RowSelect">
           <Columns>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Vium" Property="idv" Title="Idv">
+            </RadzenDataGridColumn>
             <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Vium" Property="tamanho" Title="Tamanho">
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Vium" Property="idv" Title="Idv">
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Vium" Property="nome" Title="Nome">
             </RadzenDataGridColumn>
             <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.Vium" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
               <Template Context="findSupermarketModelsFindSupermarketDbVium">

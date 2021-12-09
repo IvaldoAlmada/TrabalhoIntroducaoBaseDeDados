@@ -58,20 +58,20 @@
                   "title": "",
                   "columns": [
                     {
-                      "property": "ids",
-                      "sortProperty": "Supermercado.tipo",
-                      "groupProperty": "Supermercado.tipo",
-                      "filterProperty": "Supermercado.tipo",
-                      "template": "${data.Supermercado?.tipo}",
-                      "title": "Supermercado"
+                      "property": "idv",
+                      "sortProperty": "Vium.nome",
+                      "groupProperty": "Vium.nome",
+                      "filterProperty": "Vium.nome",
+                      "template": "${data.Vium?.nome}",
+                      "title": "Vium"
                     },
                     {
-                      "property": "idv",
-                      "sortProperty": "Vium.idv",
-                      "groupProperty": "Vium.idv",
-                      "filterProperty": "Vium.idv",
-                      "template": "${data.Vium?.idv}",
-                      "title": "Vium"
+                      "property": "ids",
+                      "sortProperty": "Supermercado.nome",
+                      "groupProperty": "Supermercado.nome",
+                      "filterProperty": "Supermercado.nome",
+                      "template": "${data.Supermercado?.nome}",
+                      "title": "Supermercado"
                     },
                     {
                       "filterable": false,
@@ -104,15 +104,15 @@
                                     "type": "notify"
                                   }
                                 ],
-                                "name": "find_supermarket_db.deleteConduz",
+                                "name": "findSupermarketDB.deleteConduz",
                                 "parameters": [
-                                  {
-                                    "name": "ids",
-                                    "value": "${data.ids}"
-                                  },
                                   {
                                     "name": "idv",
                                     "value": "${data.idv}"
+                                  },
+                                  {
+                                    "name": "ids",
+                                    "value": "${data.ids}"
                                   }
                                 ],
                                 "then": [
@@ -143,11 +143,11 @@
   "events": {
     "load": [
       {
-        "name": "find_supermarket_db.getConduzs",
+        "name": "findSupermarketDB.getConduzs",
         "parameters": [
           {
             "name": "$expand",
-            "value": "Supermercado,Vium"
+            "value": "Vium,Supermercado"
           }
         ],
         "then": [

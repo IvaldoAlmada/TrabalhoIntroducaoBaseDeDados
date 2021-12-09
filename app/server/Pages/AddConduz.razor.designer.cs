@@ -47,25 +47,6 @@ namespace FindSupermarket.Pages
         [Inject]
         protected FindSupermarketDbService FindSupermarketDb { get; set; }
 
-        IEnumerable<FindSupermarket.Models.FindSupermarketDb.Supermercado> _getSupermercadosResult;
-        protected IEnumerable<FindSupermarket.Models.FindSupermarketDb.Supermercado> getSupermercadosResult
-        {
-            get
-            {
-                return _getSupermercadosResult;
-            }
-            set
-            {
-                if (!object.Equals(_getSupermercadosResult, value))
-                {
-                    var args = new PropertyChangedEventArgs(){ Name = "getSupermercadosResult", NewValue = value, OldValue = _getSupermercadosResult };
-                    _getSupermercadosResult = value;
-                    OnPropertyChanged(args);
-                    Reload();
-                }
-            }
-        }
-
         IEnumerable<FindSupermarket.Models.FindSupermarketDb.Vium> _getViaResult;
         protected IEnumerable<FindSupermarket.Models.FindSupermarketDb.Vium> getViaResult
         {
@@ -79,6 +60,25 @@ namespace FindSupermarket.Pages
                 {
                     var args = new PropertyChangedEventArgs(){ Name = "getViaResult", NewValue = value, OldValue = _getViaResult };
                     _getViaResult = value;
+                    OnPropertyChanged(args);
+                    Reload();
+                }
+            }
+        }
+
+        IEnumerable<FindSupermarket.Models.FindSupermarketDb.Supermercado> _getSupermercadosResult;
+        protected IEnumerable<FindSupermarket.Models.FindSupermarketDb.Supermercado> getSupermercadosResult
+        {
+            get
+            {
+                return _getSupermercadosResult;
+            }
+            set
+            {
+                if (!object.Equals(_getSupermercadosResult, value))
+                {
+                    var args = new PropertyChangedEventArgs(){ Name = "getSupermercadosResult", NewValue = value, OldValue = _getSupermercadosResult };
+                    _getSupermercadosResult = value;
                     OnPropertyChanged(args);
                     Reload();
                 }
@@ -110,11 +110,11 @@ namespace FindSupermarket.Pages
         }
         protected async System.Threading.Tasks.Task Load()
         {
-            var findSupermarketDbGetSupermercadosResult = await FindSupermarketDb.GetSupermercados();
-            getSupermercadosResult = findSupermarketDbGetSupermercadosResult;
-
             var findSupermarketDbGetViaResult = await FindSupermarketDb.GetVia();
             getViaResult = findSupermarketDbGetViaResult;
+
+            var findSupermarketDbGetSupermercadosResult = await FindSupermarketDb.GetSupermercados();
+            getSupermercadosResult = findSupermarketDbGetSupermercadosResult;
 
             conduz = new FindSupermarket.Models.FindSupermarketDb.Conduz(){};
         }

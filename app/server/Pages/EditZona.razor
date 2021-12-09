@@ -13,6 +13,18 @@
           <ChildContent>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
+                <RadzenLabel Text="Idz" Component="idz" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenNumeric style="display: block; width: 100%" @bind-Value="@(zona.idz)" Name="Idz">
+                </RadzenNumeric>
+                <RadzenRequiredValidator Component="Idz" Text="idz is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
                 <RadzenLabel Text="Populacao" Component="populao" style="width: 100%">
                 </RadzenLabel>
               </div>
@@ -23,14 +35,12 @@
             </div>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
-                <RadzenLabel Text="Idz" Component="idz" style="width: 100%">
+                <RadzenLabel Text="Name" Component="name" style="width: 100%">
                 </RadzenLabel>
               </div>
               <div class="col-md-9">
-                <RadzenNumeric style="display: block; width: 100%" @bind-Value="@(zona.idz)" Name="Idz">
-                </RadzenNumeric>
-                <RadzenRequiredValidator Component="Idz" Text="idz is required" style="position: absolute">
-                </RadzenRequiredValidator>
+                <RadzenTextBox style="width: 100%" @bind-Value="@(zona.name)" Name="Name">
+                </RadzenTextBox>
               </div>
             </div>
             <div class="row">

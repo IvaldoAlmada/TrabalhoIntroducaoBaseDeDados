@@ -7,7 +7,7 @@ using Radzen.Blazor;
 
 namespace FindSupermarket.Pages
 {
-    public partial class EditTransporteComponent
+    public partial class GeometryColumnsComponent
     {
 
     }

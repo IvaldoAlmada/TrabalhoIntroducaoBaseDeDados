@@ -13,12 +13,34 @@
           <ChildContent>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
+                <RadzenLabel Text="Srid" Component="srid" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenNumeric style="display: block; width: 100%" @bind-Value="@(spatialrefsy.srid)" Name="Srid">
+                </RadzenNumeric>
+                <RadzenRequiredValidator Component="Srid" Text="srid is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
                 <RadzenLabel Text="Auth Srid" Component="auth_srid" style="width: 100%">
                 </RadzenLabel>
               </div>
               <div class="col-md-9">
                 <RadzenNumeric style="width: 100%" @bind-Value="@(spatialrefsy.auth_srid)" Name="Auth_srid">
                 </RadzenNumeric>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Auth Name" Component="auth_name" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="256" style="width: 100%" @bind-Value="@(spatialrefsy.auth_name)" Name="Auth_name">
+                </RadzenTextBox>
               </div>
             </div>
             <div style="margin-bottom: 1rem" class="row">
@@ -33,33 +55,11 @@
             </div>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
-                <RadzenLabel Text="Srid" Component="srid" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenNumeric style="display: block; width: 100%" @bind-Value="@(spatialrefsy.srid)" Name="Srid">
-                </RadzenNumeric>
-                <RadzenRequiredValidator Component="Srid" Text="srid is required" style="position: absolute">
-                </RadzenRequiredValidator>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
                 <RadzenLabel Text="Proj 4 Text" Component="proj4text" style="width: 100%">
                 </RadzenLabel>
               </div>
               <div class="col-md-9">
                 <RadzenTextBox MaxLength="2048" style="width: 100%" @bind-Value="@(spatialrefsy.proj4text)" Name="Proj4text">
-                </RadzenTextBox>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
-                <RadzenLabel Text="Auth Name" Component="auth_name" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenTextBox MaxLength="256" style="width: 100%" @bind-Value="@(spatialrefsy.auth_name)" Name="Auth_name">
                 </RadzenTextBox>
               </div>
             </div>

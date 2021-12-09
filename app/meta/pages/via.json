@@ -75,12 +75,16 @@
                   "title": "",
                   "columns": [
                     {
+                      "property": "idv",
+                      "title": "Idv"
+                    },
+                    {
                       "property": "tamanho",
                       "title": "Tamanho"
                     },
                     {
-                      "property": "idv",
-                      "title": "Idv"
+                      "property": "nome",
+                      "title": "Nome"
                     },
                     {
                       "filterable": false,
@@ -113,7 +117,7 @@
                                     "type": "notify"
                                   }
                                 ],
-                                "name": "find_supermarket_db.deleteVium",
+                                "name": "findSupermarketDB.deleteVium",
                                 "parameters": [
                                   {
                                     "name": "idv",
@@ -148,7 +152,7 @@
   "events": {
     "load": [
       {
-        "name": "find_supermarket_db.getVia",
+        "name": "findSupermarketDB.getVia",
         "parameters": [],
         "then": [
           {

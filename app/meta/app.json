@@ -1,6 +1,6 @@
 {
   "dataSources": [
-    "find_supermarket_db"
+    "findSupermarketDB"
   ],
   "generator": "@radzen/blazor-server",
   "https": false,
@@ -12,28 +12,30 @@
   "name": "findSupermarket",
   "navigation": [
     "Conduzs",
+    "Geography Columns",
+    "Geometry Columns",
     "Produtos",
+    "Produto Zonas",
     "Spatial Ref Sies",
     "Supermercados",
-    "Transportes",
     "Via",
     "Zonas"
   ],
   "pages": [
     "Conduzs",
     "Add Conduz",
+    "Geography Columns",
+    "Geometry Columns",
     "Produtos",
     "Add Produto",
     "Edit Produto",
+    "Produto Zonas",
     "Spatial Ref Sies",
     "Add Spatial Ref Sy",
     "Edit Spatial Ref Sy",
     "Supermercados",
     "Add Supermercado",
     "Edit Supermercado",
-    "Transportes",
-    "Add Transporte",
-    "Edit Transporte",
     "Via",
     "Add Vium",
     "Edit Vium",

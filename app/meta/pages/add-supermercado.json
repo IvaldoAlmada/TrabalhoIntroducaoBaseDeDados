@@ -27,97 +27,6 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Zona",
-                              "component": "idz",
-                              "name": "idzLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "data": "${getZonasResult}",
-                              "textProperty": "idz",
-                              "valueProperty": "idz",
-                              "placeholder": "Choose Zona",
-                              "valueType": "int?",
-                              "type": "dropdown",
-                              "name": "idz",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "value": "${supermercado.idz}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
-                              "text": "Horafechamento",
-                              "component": "horafechamento",
-                              "name": "horafechamentoLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "DateTime",
-                              "dateFormat": "MM/dd/yyyy",
-                              "type": "datepicker",
-                              "name": "horafechamento",
-                              "style": {
-                                "display": "block",
-                                "width": "100%"
-                              },
-                              "value": "${supermercado.horafechamento}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "horafechamentoRequiredValidator",
-                              "component": "horafechamento",
-                              "text": "horafechamento is required",
-                              "style": {
-                                "position": "absolute"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
                               "text": "Ids",
                               "component": "ids",
                               "name": "idsLabel",
@@ -166,9 +75,9 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Horaabertura",
-                              "component": "horaabertura",
-                              "name": "horaaberturaLabel",
+                              "text": "Zona",
+                              "component": "idz",
+                              "name": "idzLabel",
                               "style": {
                                 "width": "100%"
                               }
@@ -180,24 +89,55 @@
                           "class": "col-md-9",
                           "components": [
                             {
-                              "valueType": "DateTime",
-                              "dateFormat": "MM/dd/yyyy",
-                              "type": "datepicker",
-                              "name": "horaabertura",
+                              "data": "${getZonasResult}",
+                              "textProperty": "name",
+                              "valueProperty": "idz",
+                              "placeholder": "Choose Zona",
+                              "valueType": "int?",
+                              "type": "dropdown",
+                              "name": "idz",
                               "style": {
-                                "display": "block",
                                 "width": "100%"
                               },
-                              "value": "${supermercado.horaabertura}"
-                            },
+                              "value": "${supermercado.idz}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
                             {
-                              "type": "required-validator",
-                              "name": "horaaberturaRequiredValidator",
-                              "component": "horaabertura",
-                              "text": "horaabertura is required",
+                              "type": "label",
+                              "text": "Nome",
+                              "component": "nome",
+                              "name": "nomeLabel",
                               "style": {
-                                "position": "absolute"
+                                "width": "100%"
                               }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "type": "textbox",
+                              "name": "nome",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${supermercado.nome}"
                             }
                           ]
                         }
@@ -233,19 +173,9 @@
                               "type": "textbox",
                               "name": "tipo",
                               "style": {
-                                "display": "block",
                                 "width": "100%"
                               },
                               "value": "${supermercado.tipo}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "tipoRequiredValidator",
-                              "component": "tipo",
-                              "text": "tipo is required",
-                              "style": {
-                                "position": "absolute"
-                              }
                             }
                           ]
                         }
@@ -296,7 +226,7 @@
                             "type": "notify"
                           }
                         ],
-                        "name": "find_supermarket_db.createSupermercado",
+                        "name": "findSupermarketDB.createSupermercado",
                         "parameters": [
                           {
                             "name": "Supermercado",
@@ -327,7 +257,7 @@
   "events": {
     "load": [
       {
-        "name": "find_supermarket_db.getZonas",
+        "name": "findSupermarketDB.getZonas",
         "parameters": [],
         "then": [
           {

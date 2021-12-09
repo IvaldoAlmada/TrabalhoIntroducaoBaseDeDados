@@ -75,26 +75,20 @@
                   "title": "",
                   "columns": [
                     {
-                      "property": "idz",
-                      "sortProperty": "Zona.idz",
-                      "groupProperty": "Zona.idz",
-                      "filterProperty": "Zona.idz",
-                      "template": "${data.Zona?.idz}",
-                      "title": "Zona"
-                    },
-                    {
-                      "property": "horafechamento",
-                      "formatString": "{0:MM/dd/yyyy}",
-                      "title": "Horafechamento"
-                    },
-                    {
                       "property": "ids",
                       "title": "Ids"
                     },
                     {
-                      "property": "horaabertura",
-                      "formatString": "{0:MM/dd/yyyy}",
-                      "title": "Horaabertura"
+                      "property": "idz",
+                      "sortProperty": "Zona.name",
+                      "groupProperty": "Zona.name",
+                      "filterProperty": "Zona.name",
+                      "template": "${data.Zona?.name}",
+                      "title": "Zona"
+                    },
+                    {
+                      "property": "nome",
+                      "title": "Nome"
                     },
                     {
                       "property": "tipo",
@@ -131,7 +125,7 @@
                                     "type": "notify"
                                   }
                                 ],
-                                "name": "find_supermarket_db.deleteSupermercado",
+                                "name": "findSupermarketDB.deleteSupermercado",
                                 "parameters": [
                                   {
                                     "name": "ids",
@@ -166,7 +160,7 @@
   "events": {
     "load": [
       {
-        "name": "find_supermarket_db.getSupermercados",
+        "name": "findSupermarketDB.getSupermercados",
         "parameters": [
           {
             "name": "$expand",

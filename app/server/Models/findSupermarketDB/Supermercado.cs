@@ -8,17 +8,6 @@ namespace FindSupermarket.Models.FindSupermarketDb
   [Table("supermercado", Schema = "public")]
   public partial class Supermercado
   {
-    public int? idz
-    {
-      get;
-      set;
-    }
-    public Zona Zona { get; set; }
-    public DateTime horafechamento
-    {
-      get;
-      set;
-    }
     [Key]
     public int ids
     {
@@ -28,7 +17,13 @@ namespace FindSupermarket.Models.FindSupermarketDb
 
     public ICollection<Produto> Produtos { get; set; }
     public ICollection<Conduz> Conduzs { get; set; }
-    public DateTime horaabertura
+    public int? idz
+    {
+      get;
+      set;
+    }
+    public Zona Zona { get; set; }
+    public string nome
     {
       get;
       set;

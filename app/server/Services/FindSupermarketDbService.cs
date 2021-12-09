@@ -52,9 +52,9 @@ namespace FindSupermarket
         {
             var items = Context.Conduzs.AsQueryable();
 
-            items = items.Include(i => i.Supermercado);
-
             items = items.Include(i => i.Vium);
+
+            items = items.Include(i => i.Supermercado);
 
             if (query != null)
             {
@@ -108,7 +108,7 @@ namespace FindSupermarket
             OnConduzCreated(conduz);
 
             var existingItem = Context.Conduzs
-                              .Where(i => i.ids == conduz.ids && i.idv == conduz.idv)
+                              .Where(i => i.idv == conduz.idv && i.ids == conduz.ids)
                               .FirstOrDefault();
 
             if (existingItem != null)
@@ -124,14 +124,134 @@ namespace FindSupermarket
             catch
             {
                 Context.Entry(conduz).State = EntityState.Detached;
-                conduz.Supermercado = null;
                 conduz.Vium = null;
+                conduz.Supermercado = null;
                 throw;
             }
 
             OnAfterConduzCreated(conduz);
 
             return conduz;
+        }
+        public async Task ExportGeographyColumnsToExcel(Query query = null, string fileName = null)
+        {
+            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/findsupermarketdb/geographycolumns/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/findsupermarketdb/geographycolumns/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
+        }
+
+        public async Task ExportGeographyColumnsToCSV(Query query = null, string fileName = null)
+        {
+            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/findsupermarketdb/geographycolumns/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/findsupermarketdb/geographycolumns/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
+        }
+
+        partial void OnGeographyColumnsRead(ref IQueryable<Models.FindSupermarketDb.GeographyColumn> items);
+
+        public async Task<IQueryable<Models.FindSupermarketDb.GeographyColumn>> GetGeographyColumns(Query query = null)
+        {
+            var items = Context.GeographyColumns.AsQueryable();
+            items = items.AsNoTracking();
+
+            if (query != null)
+            {
+                if (!string.IsNullOrEmpty(query.Expand))
+                {
+                    var propertiesToExpand = query.Expand.Split(',');
+                    foreach(var p in propertiesToExpand)
+                    {
+                        items = items.Include(p);
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(query.Filter))
+                {
+                    if (query.FilterParameters != null)
+                    {
+                        items = items.Where(query.Filter, query.FilterParameters);
+                    }
+                    else
+                    {
+                        items = items.Where(query.Filter);
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(query.OrderBy))
+                {
+                    items = items.OrderBy(query.OrderBy);
+                }
+
+                if (query.Skip.HasValue)
+                {
+                    items = items.Skip(query.Skip.Value);
+                }
+
+                if (query.Top.HasValue)
+                {
+                    items = items.Take(query.Top.Value);
+                }
+            }
+
+            OnGeographyColumnsRead(ref items);
+
+            return await Task.FromResult(items);
+        }
+        public async Task ExportGeometryColumnsToExcel(Query query = null, string fileName = null)
+        {
+            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/findsupermarketdb/geometrycolumns/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/findsupermarketdb/geometrycolumns/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
+        }
+
+        public async Task ExportGeometryColumnsToCSV(Query query = null, string fileName = null)
+        {
+            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/findsupermarketdb/geometrycolumns/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/findsupermarketdb/geometrycolumns/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
+        }
+
+        partial void OnGeometryColumnsRead(ref IQueryable<Models.FindSupermarketDb.GeometryColumn> items);
+
+        public async Task<IQueryable<Models.FindSupermarketDb.GeometryColumn>> GetGeometryColumns(Query query = null)
+        {
+            var items = Context.GeometryColumns.AsQueryable();
+            items = items.AsNoTracking();
+
+            if (query != null)
+            {
+                if (!string.IsNullOrEmpty(query.Expand))
+                {
+                    var propertiesToExpand = query.Expand.Split(',');
+                    foreach(var p in propertiesToExpand)
+                    {
+                        items = items.Include(p);
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(query.Filter))
+                {
+                    if (query.FilterParameters != null)
+                    {
+                        items = items.Where(query.Filter, query.FilterParameters);
+                    }
+                    else
+                    {
+                        items = items.Where(query.Filter);
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(query.OrderBy))
+                {
+                    items = items.OrderBy(query.OrderBy);
+                }
+
+                if (query.Skip.HasValue)
+                {
+                    items = items.Skip(query.Skip.Value);
+                }
+
+                if (query.Top.HasValue)
+                {
+                    items = items.Take(query.Top.Value);
+                }
+            }
+
+            OnGeometryColumnsRead(ref items);
+
+            return await Task.FromResult(items);
         }
         public async Task ExportProdutosToExcel(Query query = null, string fileName = null)
         {
@@ -226,6 +346,66 @@ namespace FindSupermarket
             OnAfterProdutoCreated(produto);
 
             return produto;
+        }
+        public async Task ExportProdutoZonasToExcel(Query query = null, string fileName = null)
+        {
+            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/findsupermarketdb/produtozonas/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/findsupermarketdb/produtozonas/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
+        }
+
+        public async Task ExportProdutoZonasToCSV(Query query = null, string fileName = null)
+        {
+            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/findsupermarketdb/produtozonas/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/findsupermarketdb/produtozonas/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
+        }
+
+        partial void OnProdutoZonasRead(ref IQueryable<Models.FindSupermarketDb.ProdutoZona> items);
+
+        public async Task<IQueryable<Models.FindSupermarketDb.ProdutoZona>> GetProdutoZonas(Query query = null)
+        {
+            var items = Context.ProdutoZonas.AsQueryable();
+            items = items.AsNoTracking();
+
+            if (query != null)
+            {
+                if (!string.IsNullOrEmpty(query.Expand))
+                {
+                    var propertiesToExpand = query.Expand.Split(',');
+                    foreach(var p in propertiesToExpand)
+                    {
+                        items = items.Include(p);
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(query.Filter))
+                {
+                    if (query.FilterParameters != null)
+                    {
+                        items = items.Where(query.Filter, query.FilterParameters);
+                    }
+                    else
+                    {
+                        items = items.Where(query.Filter);
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(query.OrderBy))
+                {
+                    items = items.OrderBy(query.OrderBy);
+                }
+
+                if (query.Skip.HasValue)
+                {
+                    items = items.Skip(query.Skip.Value);
+                }
+
+                if (query.Top.HasValue)
+                {
+                    items = items.Take(query.Top.Value);
+                }
+            }
+
+            OnProdutoZonasRead(ref items);
+
+            return await Task.FromResult(items);
         }
         public async Task ExportSpatialRefSiesToExcel(Query query = null, string fileName = null)
         {
@@ -411,100 +591,6 @@ namespace FindSupermarket
             OnAfterSupermercadoCreated(supermercado);
 
             return supermercado;
-        }
-        public async Task ExportTransportesToExcel(Query query = null, string fileName = null)
-        {
-            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/findsupermarketdb/transportes/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/findsupermarketdb/transportes/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
-        }
-
-        public async Task ExportTransportesToCSV(Query query = null, string fileName = null)
-        {
-            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/findsupermarketdb/transportes/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/findsupermarketdb/transportes/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
-        }
-
-        partial void OnTransportesRead(ref IQueryable<Models.FindSupermarketDb.Transporte> items);
-
-        public async Task<IQueryable<Models.FindSupermarketDb.Transporte>> GetTransportes(Query query = null)
-        {
-            var items = Context.Transportes.AsQueryable();
-
-            items = items.Include(i => i.Vium);
-
-            if (query != null)
-            {
-                if (!string.IsNullOrEmpty(query.Expand))
-                {
-                    var propertiesToExpand = query.Expand.Split(',');
-                    foreach(var p in propertiesToExpand)
-                    {
-                        items = items.Include(p);
-                    }
-                }
-
-                if (!string.IsNullOrEmpty(query.Filter))
-                {
-                    if (query.FilterParameters != null)
-                    {
-                        items = items.Where(query.Filter, query.FilterParameters);
-                    }
-                    else
-                    {
-                        items = items.Where(query.Filter);
-                    }
-                }
-
-                if (!string.IsNullOrEmpty(query.OrderBy))
-                {
-                    items = items.OrderBy(query.OrderBy);
-                }
-
-                if (query.Skip.HasValue)
-                {
-                    items = items.Skip(query.Skip.Value);
-                }
-
-                if (query.Top.HasValue)
-                {
-                    items = items.Take(query.Top.Value);
-                }
-            }
-
-            OnTransportesRead(ref items);
-
-            return await Task.FromResult(items);
-        }
-
-        partial void OnTransporteCreated(Models.FindSupermarketDb.Transporte item);
-        partial void OnAfterTransporteCreated(Models.FindSupermarketDb.Transporte item);
-
-        public async Task<Models.FindSupermarketDb.Transporte> CreateTransporte(Models.FindSupermarketDb.Transporte transporte)
-        {
-            OnTransporteCreated(transporte);
-
-            var existingItem = Context.Transportes
-                              .Where(i => i.idt == transporte.idt)
-                              .FirstOrDefault();
-
-            if (existingItem != null)
-            {
-               throw new Exception("Item already available");
-            }            
-
-            try
-            {
-                Context.Transportes.Add(transporte);
-                Context.SaveChanges();
-            }
-            catch
-            {
-                Context.Entry(transporte).State = EntityState.Detached;
-                transporte.Vium = null;
-                throw;
-            }
-
-            OnAfterTransporteCreated(transporte);
-
-            return transporte;
         }
         public async Task ExportViaToExcel(Query query = null, string fileName = null)
         {
@@ -692,10 +778,10 @@ namespace FindSupermarket
         partial void OnConduzDeleted(Models.FindSupermarketDb.Conduz item);
         partial void OnAfterConduzDeleted(Models.FindSupermarketDb.Conduz item);
 
-        public async Task<Models.FindSupermarketDb.Conduz> DeleteConduz(int? ids, int? idv)
+        public async Task<Models.FindSupermarketDb.Conduz> DeleteConduz(int? idv, int? ids)
         {
             var itemToDelete = Context.Conduzs
-                              .Where(i => i.ids == ids && i.idv == idv)
+                              .Where(i => i.idv == idv && i.ids == ids)
                               .FirstOrDefault();
 
             if (itemToDelete == null)
@@ -724,15 +810,15 @@ namespace FindSupermarket
 
         partial void OnConduzGet(Models.FindSupermarketDb.Conduz item);
 
-        public async Task<Models.FindSupermarketDb.Conduz> GetConduzByIdsAndIdv(int? ids, int? idv)
+        public async Task<Models.FindSupermarketDb.Conduz> GetConduzByIdvAndIds(int? idv, int? ids)
         {
             var items = Context.Conduzs
                               .AsNoTracking()
-                              .Where(i => i.ids == ids && i.idv == idv);
-
-            items = items.Include(i => i.Supermercado);
+                              .Where(i => i.idv == idv && i.ids == ids);
 
             items = items.Include(i => i.Vium);
+
+            items = items.Include(i => i.Supermercado);
 
             var itemToReturn = items.FirstOrDefault();
 
@@ -756,12 +842,12 @@ namespace FindSupermarket
         partial void OnConduzUpdated(Models.FindSupermarketDb.Conduz item);
         partial void OnAfterConduzUpdated(Models.FindSupermarketDb.Conduz item);
 
-        public async Task<Models.FindSupermarketDb.Conduz> UpdateConduz(int? ids, int? idv, Models.FindSupermarketDb.Conduz conduz)
+        public async Task<Models.FindSupermarketDb.Conduz> UpdateConduz(int? idv, int? ids, Models.FindSupermarketDb.Conduz conduz)
         {
             OnConduzUpdated(conduz);
 
             var itemToUpdate = Context.Conduzs
-                              .Where(i => i.ids == ids && i.idv == idv)
+                              .Where(i => i.idv == idv && i.ids == ids)
                               .FirstOrDefault();
             if (itemToUpdate == null)
             {
@@ -1039,93 +1125,6 @@ namespace FindSupermarket
             return supermercado;
         }
 
-        partial void OnTransporteDeleted(Models.FindSupermarketDb.Transporte item);
-        partial void OnAfterTransporteDeleted(Models.FindSupermarketDb.Transporte item);
-
-        public async Task<Models.FindSupermarketDb.Transporte> DeleteTransporte(int? idt)
-        {
-            var itemToDelete = Context.Transportes
-                              .Where(i => i.idt == idt)
-                              .FirstOrDefault();
-
-            if (itemToDelete == null)
-            {
-               throw new Exception("Item no longer available");
-            }
-
-            OnTransporteDeleted(itemToDelete);
-
-            Context.Transportes.Remove(itemToDelete);
-
-            try
-            {
-                Context.SaveChanges();
-            }
-            catch
-            {
-                Context.Entry(itemToDelete).State = EntityState.Unchanged;
-                throw;
-            }
-
-            OnAfterTransporteDeleted(itemToDelete);
-
-            return itemToDelete;
-        }
-
-        partial void OnTransporteGet(Models.FindSupermarketDb.Transporte item);
-
-        public async Task<Models.FindSupermarketDb.Transporte> GetTransporteByidt(int? idt)
-        {
-            var items = Context.Transportes
-                              .AsNoTracking()
-                              .Where(i => i.idt == idt);
-
-            items = items.Include(i => i.Vium);
-
-            var itemToReturn = items.FirstOrDefault();
-
-            OnTransporteGet(itemToReturn);
-
-            return await Task.FromResult(itemToReturn);
-        }
-
-        public async Task<Models.FindSupermarketDb.Transporte> CancelTransporteChanges(Models.FindSupermarketDb.Transporte item)
-        {
-            var entityToCancel = Context.Entry(item);
-            if (entityToCancel.State == EntityState.Modified)
-            {
-              entityToCancel.CurrentValues.SetValues(entityToCancel.OriginalValues);
-              entityToCancel.State = EntityState.Unchanged;
-            }
-
-            return item;
-        }
-
-        partial void OnTransporteUpdated(Models.FindSupermarketDb.Transporte item);
-        partial void OnAfterTransporteUpdated(Models.FindSupermarketDb.Transporte item);
-
-        public async Task<Models.FindSupermarketDb.Transporte> UpdateTransporte(int? idt, Models.FindSupermarketDb.Transporte transporte)
-        {
-            OnTransporteUpdated(transporte);
-
-            var itemToUpdate = Context.Transportes
-                              .Where(i => i.idt == idt)
-                              .FirstOrDefault();
-            if (itemToUpdate == null)
-            {
-               throw new Exception("Item no longer available");
-            }
-
-            var entryToUpdate = Context.Entry(itemToUpdate);
-            entryToUpdate.CurrentValues.SetValues(transporte);
-            entryToUpdate.State = EntityState.Modified;
-            Context.SaveChanges();       
-
-            OnAfterTransporteUpdated(transporte);
-
-            return transporte;
-        }
-
         partial void OnViumDeleted(Models.FindSupermarketDb.Vium item);
         partial void OnAfterViumDeleted(Models.FindSupermarketDb.Vium item);
 
@@ -1133,7 +1132,6 @@ namespace FindSupermarket
         {
             var itemToDelete = Context.Via
                               .Where(i => i.idv == idv)
-                              .Include(i => i.Transportes)
                               .Include(i => i.Conduzs)
                               .FirstOrDefault();
 

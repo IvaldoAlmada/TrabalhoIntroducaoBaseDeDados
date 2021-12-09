@@ -27,54 +27,6 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Tamanho",
-                              "component": "tamanho",
-                              "name": "tamanhoLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "int",
-                              "type": "numeric",
-                              "name": "tamanho",
-                              "style": {
-                                "display": "block",
-                                "width": "100%"
-                              },
-                              "value": "${vium.tamanho}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "tamanhoRequiredValidator",
-                              "component": "tamanho",
-                              "text": "tamanho is required",
-                              "style": {
-                                "position": "absolute"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
                               "text": "Idv",
                               "component": "idv",
                               "name": "idvLabel",
@@ -106,6 +58,82 @@
                               "style": {
                                 "position": "absolute"
                               }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Tamanho",
+                              "component": "tamanho",
+                              "name": "tamanhoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "int?",
+                              "type": "numeric",
+                              "name": "tamanho",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${vium.tamanho}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Nome",
+                              "component": "nome",
+                              "name": "nomeLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "type": "textbox",
+                              "name": "nome",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${vium.nome}"
                             }
                           ]
                         }
@@ -156,7 +184,7 @@
                             "type": "notify"
                           }
                         ],
-                        "name": "find_supermarket_db.updateVium",
+                        "name": "findSupermarketDB.updateVium",
                         "parameters": [
                           {
                             "name": "idv",
@@ -192,7 +220,7 @@
   "events": {
     "load": [
       {
-        "name": "find_supermarket_db.getViumByidv",
+        "name": "findSupermarketDB.getViumByidv",
         "parameters": [
           {
             "name": "idv",

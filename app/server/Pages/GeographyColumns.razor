@@ -1,0 +1,35 @@
+﻿@page "/geography-columns"
+@layout MainLayout
+@inherits FindSupermarket.Pages.GeographyColumnsComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using FindSupermarket.Models.FindSupermarketDb
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Geography Columns">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getGeographyColumnsResult" TItem="FindSupermarket.Models.FindSupermarketDb.GeographyColumn">
+          <Columns>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.GeographyColumn" Property="f_table_catalog" Title="F Table Catalog">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.GeographyColumn" Property="f_table_schema" Title="F Table Schema">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.GeographyColumn" Property="f_table_name" Title="F Table Name">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.GeographyColumn" Property="f_geography_column" Title="F Geography Column">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.GeographyColumn" Property="coord_dimension" Title="Coord Dimension">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.GeographyColumn" Property="srid" Title="Srid">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="FindSupermarket.Models.FindSupermarketDb.GeographyColumn" Property="type" Title="Type">
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

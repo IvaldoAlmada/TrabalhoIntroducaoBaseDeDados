@@ -27,9 +27,9 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Supermercado",
-                              "component": "ids",
-                              "name": "idsLabel",
+                              "text": "Vium",
+                              "component": "idv",
+                              "name": "idvLabel",
                               "style": {
                                 "width": "100%"
                               }
@@ -41,24 +41,24 @@
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${getSupermercadosResult}",
-                              "textProperty": "tipo",
-                              "valueProperty": "ids",
-                              "placeholder": "Choose Supermercado",
+                              "data": "${getViaResult}",
+                              "textProperty": "nome",
+                              "valueProperty": "idv",
+                              "placeholder": "Choose Vium",
                               "valueType": "int",
                               "type": "dropdown",
-                              "name": "ids",
+                              "name": "idv",
                               "style": {
                                 "display": "block",
                                 "width": "100%"
                               },
-                              "value": "${conduz.ids}"
+                              "value": "${conduz.idv}"
                             },
                             {
                               "type": "required-validator",
-                              "name": "idsRequiredValidator",
-                              "component": "ids",
-                              "text": "ids is required",
+                              "name": "idvRequiredValidator",
+                              "component": "idv",
+                              "text": "idv is required",
                               "style": {
                                 "position": "absolute"
                               },
@@ -80,9 +80,9 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Vium",
-                              "component": "idv",
-                              "name": "idvLabel",
+                              "text": "Supermercado",
+                              "component": "ids",
+                              "name": "idsLabel",
                               "style": {
                                 "width": "100%"
                               }
@@ -94,24 +94,24 @@
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${getViaResult}",
-                              "textProperty": "idv",
-                              "valueProperty": "idv",
-                              "placeholder": "Choose Vium",
+                              "data": "${getSupermercadosResult}",
+                              "textProperty": "nome",
+                              "valueProperty": "ids",
+                              "placeholder": "Choose Supermercado",
                               "valueType": "int",
                               "type": "dropdown",
-                              "name": "idv",
+                              "name": "ids",
                               "style": {
                                 "display": "block",
                                 "width": "100%"
                               },
-                              "value": "${conduz.idv}"
+                              "value": "${conduz.ids}"
                             },
                             {
                               "type": "required-validator",
-                              "name": "idvRequiredValidator",
-                              "component": "idv",
-                              "text": "idv is required",
+                              "name": "idsRequiredValidator",
+                              "component": "ids",
+                              "text": "ids is required",
                               "style": {
                                 "position": "absolute"
                               },
@@ -166,7 +166,7 @@
                             "type": "notify"
                           }
                         ],
-                        "name": "find_supermarket_db.createConduz",
+                        "name": "findSupermarketDB.createConduz",
                         "parameters": [
                           {
                             "name": "Conduz",
@@ -197,20 +197,7 @@
   "events": {
     "load": [
       {
-        "name": "find_supermarket_db.getSupermercados",
-        "parameters": [],
-        "then": [
-          {
-            "name": "getSupermercadosResult",
-            "type": "set",
-            "value": "${result}",
-            "valueType": "IEnumerable<FindSupermarket.Models.FindSupermarketDb.Supermercado>"
-          }
-        ],
-        "type": "invoke"
-      },
-      {
-        "name": "find_supermarket_db.getVia",
+        "name": "findSupermarketDB.getVia",
         "parameters": [],
         "then": [
           {
@@ -218,6 +205,19 @@
             "type": "set",
             "value": "${result}",
             "valueType": "IEnumerable<FindSupermarket.Models.FindSupermarketDb.Vium>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "findSupermarketDB.getSupermercados",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getSupermercadosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<FindSupermarket.Models.FindSupermarketDb.Supermercado>"
           }
         ],
         "type": "invoke"

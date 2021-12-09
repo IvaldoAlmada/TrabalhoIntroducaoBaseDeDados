@@ -13,18 +13,6 @@
           <ChildContent>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
-                <RadzenLabel Text="Tamanho" Component="tamanho" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenNumeric style="display: block; width: 100%" @bind-Value="@(vium.tamanho)" Name="Tamanho">
-                </RadzenNumeric>
-                <RadzenRequiredValidator Component="Tamanho" Text="tamanho is required" style="position: absolute">
-                </RadzenRequiredValidator>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
                 <RadzenLabel Text="Idv" Component="idv" style="width: 100%">
                 </RadzenLabel>
               </div>
@@ -33,6 +21,26 @@
                 </RadzenNumeric>
                 <RadzenRequiredValidator Component="Idv" Text="idv is required" style="position: absolute">
                 </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Tamanho" Component="tamanho" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenNumeric style="width: 100%" @bind-Value="@(vium.tamanho)" Name="Tamanho">
+                </RadzenNumeric>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Nome" Component="nome" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox style="width: 100%" @bind-Value="@(vium.nome)" Name="Nome">
+                </RadzenTextBox>
               </div>
             </div>
             <div class="row">

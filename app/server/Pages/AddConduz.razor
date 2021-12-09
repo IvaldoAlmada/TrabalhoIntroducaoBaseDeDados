@@ -13,25 +13,25 @@
           <ChildContent>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
-                <RadzenLabel Text="Supermercado" Component="ids" style="width: 100%">
+                <RadzenLabel Text="Vium" Component="idv" style="width: 100%">
                 </RadzenLabel>
               </div>
               <div class="col-md-9">
-                <RadzenDropDown Data="@getSupermercadosResult" TextProperty="tipo" ValueProperty="ids" Placeholder="Choose Supermercado" style="display: block; width: 100%" @bind-Value="@(conduz.ids)" Name="Ids">
+                <RadzenDropDown Data="@getViaResult" TextProperty="nome" ValueProperty="idv" Placeholder="Choose Vium" style="display: block; width: 100%" @bind-Value="@(conduz.idv)" Name="Idv">
                 </RadzenDropDown>
-                <RadzenRequiredValidator Component="Ids" Text="ids is required" style="position: absolute" DefaultValue="0">
+                <RadzenRequiredValidator Component="Idv" Text="idv is required" style="position: absolute" DefaultValue="0">
                 </RadzenRequiredValidator>
               </div>
             </div>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
-                <RadzenLabel Text="Vium" Component="idv" style="width: 100%">
+                <RadzenLabel Text="Supermercado" Component="ids" style="width: 100%">
                 </RadzenLabel>
               </div>
               <div class="col-md-9">
-                <RadzenDropDown Data="@getViaResult" TextProperty="idv" ValueProperty="idv" Placeholder="Choose Vium" style="display: block; width: 100%" @bind-Value="@(conduz.idv)" Name="Idv">
+                <RadzenDropDown Data="@getSupermercadosResult" TextProperty="nome" ValueProperty="ids" Placeholder="Choose Supermercado" style="display: block; width: 100%" @bind-Value="@(conduz.ids)" Name="Ids">
                 </RadzenDropDown>
-                <RadzenRequiredValidator Component="Idv" Text="idv is required" style="position: absolute" DefaultValue="0">
+                <RadzenRequiredValidator Component="Ids" Text="ids is required" style="position: absolute" DefaultValue="0">
                 </RadzenRequiredValidator>
               </div>
             </div>

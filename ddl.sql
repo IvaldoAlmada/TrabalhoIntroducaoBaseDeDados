@@ -52,3 +52,11 @@ CREATE TABLE conduz (
   PRIMARY KEY (idv, ids),
   FOREIGN KEY (idv) REFERENCES Via(idv),
   FOREIGN KEY (ids) REFERENCES Supermercado(ids));
+
+
+CREATE VIEW  PRODUTO_ZONA AS SELECT s.tipo tipo_supermercado, s.nome nome_supermercado, p.nomedoproduto nome_produto, p.qtd qtd_produto, z.name nome_zona 
+FROM supermercado AS s
+INNER JOIN zona z ON z.idz = s.idZ
+INNER JOIN produto p ON s.ids = p.ids;
+
+SELECT nome_zona from produto_zona where nome_produto = 'Frango';

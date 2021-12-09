@@ -17,42 +17,45 @@ SELECT postgis_full_version();
 
 CREATE TABLE Zona (
   idz INT NOT NULL,
-  população INT NOT NULL,
-  geom  GEOMETRY,
+  população INT,
+  geom GEOMETRY,
+  name VARCHAR,
   PRIMARY KEY (idz));
 
 CREATE TABLE Via (
   idv INT NOT NULL,
-  tamanho INT NOT NULL,
-  Geom GEOMETRY,
+  tamanho INT,
+  geom GEOMETRY,
+  nome VARCHAR,
   PRIMARY KEY (idv));
 
-CREATE TABLE Transporte(
+CREATE TABLE Transporte (
   idt INT NOT NULL,
-  bilhetes VARCHAR NOT NULL,
+  bilhetes VARCHAR,
   idv INT,
   PRIMARY KEY (idt),
   FOREIGN KEY (idv) REFERENCES Via(idv));
 
-CREATE TABLE Supermercado(
+CREATE TABLE Supermercado (
   ids INT NOT NULL,
-  tipo VARCHAR NOT NULL,
-  horaAbertura DATE NOT NULL,
-  horaFechamento DATE NOT NULL,
+  tipo VARCHAR,
+  horaAbertura DATE,
+  horaFechamento DATE,
   geom GEOMETRY,
+  nome VARCHAR,
   idz INT,
   PRIMARY KEY (ids),
   FOREIGN KEY (idz) REFERENCES Zona(idz));
 
-CREATE TABLE Produto(
+CREATE TABLE Produto (
   idp INT NOT NULL,
-  nomeDoProduto VARCHAR NOT NULL,
-  qtd INT NOT NULL,
+  nomeDoProduto VARCHAR,
+  qtd INT,
   ids INT,
   PRIMARY KEY (idp),
   FOREIGN KEY (ids) REFERENCES Supermercado(ids));
 
-CREATE TABLE conduz(
+CREATE TABLE conduz (
   idv INT NOT NULL,
   ids INT NOT NULL,
   PRIMARY KEY (idv, ids),
